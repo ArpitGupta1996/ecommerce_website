@@ -5,44 +5,25 @@
 
 
 <body>
-    <!-- ============================================================== -->
-    <!-- Preloader - style you can find in spinners.css -->
-    <!-- ============================================================== -->
+
     <div class="preloader">
         <div class="lds-ripple">
             <div class="lds-pos"></div>
             <div class="lds-pos"></div>
         </div>
     </div>
-    <!-- ============================================================== -->
-    <!-- Main wrapper - style you can find in pages.scss -->
-    <!-- ============================================================== -->
+
     <div id="main-wrapper">
-        <!-- ============================================================== -->
-        <!-- Topbar header - style you can find in pages.scss -->
-        <!-- ============================================================== -->
+
         @include('admin.mainheader')
-        <!-- ============================================================== -->
-        <!-- End Topbar header -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
+
         @include('admin.sidebar')
-        <!-- ============================================================== -->
-        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
-        <!-- ============================================================== -->
-        <!-- ============================================================== -->
-        <!-- Page wrapper  -->
-        <!-- ============================================================== -->
+
         <div class="page-wrapper">
-            <!-- ============================================================== -->
-            <!-- Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
+
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        {{-- <h4 class="page-title">Tables</h4> --}}
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -53,37 +34,23 @@
                     </div>
                 </div>
             </div>
-            <!-- ============================================================== -->
-            <!-- End Bread crumb and right sidebar toggle -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- Container fluid  -->
-            <!-- ============================================================== -->
+
             <div class="container-fluid">
-                <!-- ============================================================== -->
-                <!-- Start Page Content -->
-                <!-- ============================================================== -->
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">User's List</h5>
-                                <div>
-                                    <a href="{{ route('user.create') }}">
-                                    <button type="submit" class="btn btn-primary" style="margin-left:900px;">Add
-                                        User</button>
-                                    </a>
-                                </div>
+                                <h5 class="card-title">Contact's List</h5>
+
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Sr. No.</th>
                                                 <th>Name</th>
-                                                <th>Role</th>
                                                 <th>Email</th>
-                                                <th>Phone Number</th>
-                                                <th>Action</th>
+                                                <th>Subject</th>
+                                                <th>Message</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -91,26 +58,9 @@
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
                                                     <td>{{ $datas->name }}</td>
-                                                    <td>{{ $datas->user_type }}</td>
                                                     <td>{{ $datas->email }}</td>
-                                                    <td>{{ $datas->number }}</td>
-                                                    <td>
-                                                        <a href="{{ route('user.edit', $datas->id) }}">
-                                                            <i class="m-r-10 mdi mdi-account-edit"></i>
-                                                        </a>
-
-                                                        <form id="deleteForm"
-                                                            action="{{ route('user.destroy', $datas->id) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirmDelete();">
-                                                                <i class="m-r-10 mdi mdi-delete"></i> Delete
-                                                            </button>
-                                                        </form>
-
-                                                        <i class="m-r-10 mdi mdi-eye"></i>
-                                                    </td>
+                                                    <td>{{ $datas->subject }}</td>
+                                                    <td>{{ $datas->message }}</td>
 
                                                 </tr>
                                             @endforeach

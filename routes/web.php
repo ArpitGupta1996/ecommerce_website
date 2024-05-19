@@ -2,9 +2,11 @@
 
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ContactAdminController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,6 +35,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         Route::resource('category', CategoryController::class);
 
         Route::resource('post', PostController::class);
+
+        Route::resource('contactadmin', ContactAdminController::class);
+        Route::get('contactdetails', [ContactAdminController::class,'contactdetails']);
     });
 });
 
@@ -55,3 +60,8 @@ Route::prefix('blog')->group(function () {
     Route::get('/blogdetail', [BlogController::class, 'blogdetail'])->name('blogdetail');
 });
 ############## till here blog controller section ###################
+
+
+######### Contact Controller section starts from here#########
+Route::resource('contact', ContactController::class);
+########### till here contact controller section ###########

@@ -76,14 +76,14 @@
                                                         {{ $blogs->title }}
                                                     </td>
                                                     <td>
-                                                        {{!! $blogs->body !!}}
+                                                        {!! $blogs->body !!}
                                                     </td>
                                                     <td>
 
                                                         <img src="{{URL::to('images/blog/' .$blogs->image) }}" alt="image" width="30%" height="30%">
                                                     </td>
                                                     <td>
-                                                        <a href="">
+                                                        <a href="{{ route('post.edit', $blogs->id) }}">
                                                             <i class="m-r-10 mdi mdi-account-edit"></i>
                                                         </a>
 
@@ -133,6 +133,15 @@
         $('#zero_config').DataTable();
     </script>
 
+<script>
+    function confirmDelete() {
+        // Display a confirmation dialog
+        var result = confirm("Are you sure you want to delete?");
+
+        // If user confirms, allow the link to proceed with the deletion
+        return result;
+    }
+</script>
 </body>
 
 </html>

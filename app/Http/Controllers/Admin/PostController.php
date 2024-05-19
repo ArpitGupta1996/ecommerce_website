@@ -32,8 +32,8 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //    dd('hereasxsd');
-        // return $request;
+        //    dd('store function');
+        return $request;
 
         if($request->hasFile('image')){
             $image = $request->file('image');
@@ -63,7 +63,11 @@ class PostController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $post_edit = Blog::where('id', $id)->first();
+
+        // return $post_edit;
+
+        return view('admin.blog.edit', compact('post_edit'));
     }
 
     /**
@@ -71,7 +75,15 @@ class PostController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        // dd('update fun');
+        // return $request;
+        // return $id;
+        $post_update = Blog::where('id', $id)->update([
+            'title' => $request->title,
+            'body' => $request->editorContent,
+        ]);
+
+        return redirect()->back();
     }
 
     /**

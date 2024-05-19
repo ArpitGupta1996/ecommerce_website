@@ -67,11 +67,11 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                                <h5 class="card-title">User's List</h5>
+                                <h5 class="card-title">Contact</h5>
                                 <div>
-                                    <a href="{{ route('user.create') }}">
+                                    <a href="{{ url('admin/contactadmin/create') }}">
                                     <button type="submit" class="btn btn-primary" style="margin-left:900px;">Add
-                                        User</button>
+                                        Contact</button>
                                     </a>
                                 </div>
                                 <div class="table-responsive">
@@ -79,42 +79,26 @@
                                         <thead>
                                             <tr>
                                                 <th>Sr. No.</th>
-                                                <th>Name</th>
-                                                <th>Role</th>
-                                                <th>Email</th>
+                                                <th>State</th>
                                                 <th>Phone Number</th>
+                                                <th>Email</th>
                                                 <th>Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($data as $datas)
-                                                <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $datas->name }}</td>
-                                                    <td>{{ $datas->user_type }}</td>
-                                                    <td>{{ $datas->email }}</td>
-                                                    <td>{{ $datas->number }}</td>
-                                                    <td>
-                                                        <a href="{{ route('user.edit', $datas->id) }}">
-                                                            <i class="m-r-10 mdi mdi-account-edit"></i>
-                                                        </a>
-
-                                                        <form id="deleteForm"
-                                                            action="{{ route('user.destroy', $datas->id) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirmDelete();">
-                                                                <i class="m-r-10 mdi mdi-delete"></i> Delete
-                                                            </button>
-                                                        </form>
-
-                                                        <i class="m-r-10 mdi mdi-eye"></i>
-                                                    </td>
-
-                                                </tr>
+                                            @foreach($data as $d)
+                                            <tr>
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $d->address }}</td>
+                                                <td>{{ $d->number }}</td>
+                                                <td>{{ $d->email }}</td>
+                                                <td>
+                                                    <a href="{{ route('contactadmin.edit', $d->id) }}">
+                                                        <button type="button" class="btn btn-cyan btn-sm">Edit</button>
+                                                    </a>
+                                                </td>
+                                            </tr>
                                             @endforeach
-
 
 
 
@@ -161,15 +145,7 @@
     <!-- All Jquery -->
     <!-- ============================================================== -->
     @include('admin.script')
-    <script>
-        function confirmDelete() {
-            // Display a confirmation dialog
-            var result = confirm("Are you sure you want to delete?");
 
-            // If user confirms, allow the link to proceed with the deletion
-            return result;
-        }
-    </script>
 
 </body>
 

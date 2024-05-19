@@ -43,7 +43,7 @@
                                             class="col-sm-3 text-right control-label col-form-label">Name</label>
                                         <div class="col-sm-9">
                                             <input type="text" class="form-control" id="fname"
-                                                name="{{$data}}">
+                                                name="{{$data}}" value="{{$data}}">
                                         </div>
                                     </div>
 

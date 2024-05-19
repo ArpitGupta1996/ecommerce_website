@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.png">
-    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <title>Karma Shop - Admin Panel</title>
     <!-- Custom CSS -->
     <link href="{{ asset('admintheme/assets/libs/flot/css/float-chart.css') }}" rel="stylesheet">
     <!-- Custom CSS -->

@@ -67,13 +67,13 @@
                                     <div class="form-group row">
                                         <label for="fname" class="col-sm-3 text-right control-label col-form-label">Name</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="fname" name="{{$data['0']['name']}}" autocomplete="off">
+                                            <input type="text" class="form-control" id="fname" name="{{$data['0']['name']}}" value="{{$data['0']['name']}}" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="lname" class="col-sm-3 text-right control-label col-form-label">Email</label>
                                         <div class="col-sm-9">
-                                            <input type="email" class="form-control"  name="{{$data['0']['email']}}" placeholder="Enter email Here" autocomplete="off">
+                                            <input type="email" class="form-control"  name="{{$data['0']['email']}}" value="{{$data['0']['email']}}" placeholder="Enter email Here" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group row">
@@ -97,7 +97,7 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 m-t-15">Select Role</label>
                                         <div class="col-md-9">
-                                            <select class="select2 form-control custom-select"  name="{{$data['0']['user_type']}}" style="width: 100%; height:36px;">
+                                            <select class="select2 form-control custom-select"  name="{{$data['0']['user_type']}}"  value="{{$data['0']['user_type']}}" style="width: 100%; height:36px;">
                                                 <option>Select</option>
                                                 <optgroup>
                                                     <option value="1">Admin</option>
@@ -109,7 +109,7 @@
                                     <div class="form-group row">
                                         <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Contact No</label>
                                         <div class="col-sm-9">
-                                            <input type="number" class="form-control" id="cono1" placeholder="Contact No Here" name="{{$data['0']['number']}}">
+                                            <input type="number" class="form-control" id="cono1" placeholder="Contact No Here" name="{{$data['0']['number']}}" value="{{$data['0']['number']}}">
                                         </div>
                                     </div>
 
