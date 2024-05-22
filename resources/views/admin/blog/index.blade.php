@@ -76,13 +76,14 @@
                                                         {{ $blogs->title }}
                                                     </td>
                                                     <td>
-                                                        {!! $blogs->body !!}
+                                                        {!! substr(strip_tags($blogs->body), 0, 50) !!}.....
                                                     </td>
                                                     <td>
 
-                                                        <img src="{{URL::to('images/blog/' .$blogs->image) }}" alt="image" width="30%" height="30%">
+                                                        <img src="{{ URL::to('images/blog/' . $blogs->image) }}"
+                                                            alt="image" width="30%" height="30%">
                                                     </td>
-                                                    <td>
+                                                    {{-- <td>
                                                         <a href="{{ route('post.edit', $blogs->id) }}">
                                                             <i class="m-r-10 mdi mdi-account-edit"></i>
                                                         </a>
@@ -93,6 +94,26 @@
                                                             @csrf
                                                             @method('DELETE')
                                                             <button type="submit" class="btn btn-danger" onclick="return confirmDelete();">
+                                                                <i class="m-r-10 mdi mdi-delete"></i> Delete
+                                                            </button>
+                                                        </form>
+
+                                                        <i class="m-r-10 mdi mdi-eye"></i>
+                                                    </td> --}}
+
+                                                    <td style="display: flex; align-items: center; gap: 10px;">
+                                                        <a href="{{ route('post.edit', $blogs->id) }}">
+                                                            <i class="m-r-10 mdi mdi-account-edit"></i>
+                                                        </a>
+
+                                                        <form id="deleteForm"
+                                                            action="{{ route('post.destroy', $blogs->id) }}"
+                                                            method="POST" style="margin: 0;">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <button type="submit" class="btn btn-danger"
+                                                                onclick="return confirmDelete();"
+                                                                style="display: flex; align-items: center;">
                                                                 <i class="m-r-10 mdi mdi-delete"></i> Delete
                                                             </button>
                                                         </form>
@@ -133,15 +154,15 @@
         $('#zero_config').DataTable();
     </script>
 
-<script>
-    function confirmDelete() {
-        // Display a confirmation dialog
-        var result = confirm("Are you sure you want to delete?");
+    <script>
+        function confirmDelete() {
+            // Display a confirmation dialog
+            var result = confirm("Are you sure you want to delete?");
 
-        // If user confirms, allow the link to proceed with the deletion
-        return result;
-    }
-</script>
+            // If user confirms, allow the link to proceed with the deletion
+            return result;
+        }
+    </script>
 </body>
 
 </html>

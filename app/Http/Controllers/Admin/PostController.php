@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -33,7 +34,7 @@ class PostController extends Controller
     public function store(Request $request)
     {
         //    dd('store function');
-        return $request;
+        // return $request;
 
         if($request->hasFile('image')){
             $image = $request->file('image');
@@ -41,6 +42,7 @@ class PostController extends Controller
             $image->move(public_path('images/blog'), $image_name);
 
             $data = Blog::create([
+                'created_by' => Auth::id(),
                 'title' => $request->title,
                 'body' =>  $request->editorContent,
                 'image' => $image_name
@@ -91,6 +93,10 @@ class PostController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $post = Blog::findOrfail($id);
+
+        $post->delete();
+
+        return redirect()->back()->with('success', 'Post deleted successfully');
     }
 }

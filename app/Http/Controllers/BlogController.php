@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -11,7 +12,12 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('blog.index');
+        // $blog = Blog::all();
+        $blog = Blog::orderBy('id','desc')->paginate(5);
+
+
+        // return $blog;
+        return view('blog.index', compact('blog'));
     }
 
     /**
@@ -63,7 +69,28 @@ class BlogController extends Controller
     }
 
 
-    public function blogdetail(Request $request){
-        return view('blog.blogdetail');
+    public function blogdetail(Request $request, $id)
+    {
+        // return $id;
+        $data = Blog::where('id', $id)->get();
+
+        // return $data;
+        return view('blog.blogdetail', compact('data'));
+    }
+
+    public function search(Request $request)
+    {
+        // $search = Blog::where('title','LIKE','%search%')->get();
+
+        // return $search;
+
+        $searchTerm = $request->input('search'); // Get the search term from the request
+        $results = Blog::where('title', 'LIKE', '%' . $searchTerm . '%')->get();
+        // $blog = Blog::paginate(2);
+        return $results;
+
+        // return redirect()->back();
+
+        return view('blog.index', compact('results'));
     }
 }

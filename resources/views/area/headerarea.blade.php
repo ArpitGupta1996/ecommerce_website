@@ -34,7 +34,7 @@
                                 aria-haspopup="true" aria-expanded="false">Blog</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item"><a class="nav-link" href="{{route('blogs.index')}}">Blog</a></li>
-                                <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a>
+                                {{-- <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a> --}}
                                 </li>
                             </ul>
                         </li>

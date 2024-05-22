@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\ContactAdminController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
@@ -37,7 +38,7 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
         Route::resource('post', PostController::class);
 
         Route::resource('contactadmin', ContactAdminController::class);
-        Route::get('contactdetails', [ContactAdminController::class,'contactdetails']);
+        Route::get('contactdetails', [ContactAdminController::class, 'contactdetails']);
     });
 });
 
@@ -57,10 +58,11 @@ Route::get('/shop-confirmation', [ShopController::class, 'shopconfirmation'])->n
 ############# Blog controller section starts from here ################
 Route::prefix('blog')->group(function () {
     Route::resource('blogs', BlogController::class);
-    Route::get('/blogdetail', [BlogController::class, 'blogdetail'])->name('blogdetail');
+    Route::get('/blogdetail/{id}', [BlogController::class, 'blogdetail'])->name('blogdetail');
+    Route::get('searchblog', [BlogController::class,'search'])->name('blog.search');
 });
 ############## till here blog controller section ###################
-
+Route::resource('comment', CommentController::class);
 
 ######### Contact Controller section starts from here#########
 Route::resource('contact', ContactController::class);
