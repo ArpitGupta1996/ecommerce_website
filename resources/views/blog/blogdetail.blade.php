@@ -29,42 +29,43 @@
     <!--================Blog Area =================-->
     <section class="blog_area single-post-area section_gap">
         @foreach ($data as $d)
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 posts-list">
-                    <div class="single-post row">
-                        <div class="col-lg-12">
-                            <div class="feature-img">
-                                <img class="img-fluid" src="{{URL::to('images/blog/' . $d->image)}}" alt="">
-                            </div>
-                        </div>
-                        <div class="col-lg-3  col-md-3">
-                            <div class="blog_info text-right">
-                                <div class="post_tag">
-                                    <a href="#">Food,</a>
-                                    <a class="active" href="#">Technology,</a>
-                                    <a href="#">Politics,</a>
-                                    <a href="#">Lifestyle</a>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 posts-list">
+                        <div class="single-post row">
+                            <div class="col-lg-12">
+                                <div class="feature-img">
+                                    <img class="img-fluid" src="{{ URL::to('images/blog/' . $d->image) }}"
+                                        alt="">
                                 </div>
-                                <ul class="blog_meta list">
-                                    <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
-                                    <li><a href="#">12 Dec, 2018<i class="lnr lnr-calendar-full"></i></a></li>
-                                    <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
-                                    <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
-                                </ul>
-                                <ul class="social-links">
-                                    <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-github"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-behance"></i></a></li>
-                                </ul>
                             </div>
-                        </div>
+                            <div class="col-lg-3  col-md-3">
+                                <div class="blog_info text-right">
+                                    <div class="post_tag">
+                                        <a href="#">Food,</a>
+                                        <a class="active" href="#">Technology,</a>
+                                        <a href="#">Politics,</a>
+                                        <a href="#">Lifestyle</a>
+                                    </div>
+                                    <ul class="blog_meta list">
+                                        <li><a href="#">Mark wiens<i class="lnr lnr-user"></i></a></li>
+                                        <li><a href="#">12 Dec, 2018<i class="lnr lnr-calendar-full"></i></a></li>
+                                        <li><a href="#">1.2M Views<i class="lnr lnr-eye"></i></a></li>
+                                        <li><a href="#">06 Comments<i class="lnr lnr-bubble"></i></a></li>
+                                    </ul>
+                                    <ul class="social-links">
+                                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-github"></i></a></li>
+                                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
 
                             <div class="col-lg-9 col-md-9 blog_details">
                                 <h2>{{ $d->title }}</h2>
                                 <p class="excert" style="text-align: justify;">
-                                   {!! $d->body !!}
+                                    {!! $d->body !!}
                                 </p>
 
                             </div>
@@ -105,8 +106,8 @@
                                 </div>
                             </div> --}}
 
-                    </div>
-                    {{-- <div class="navigation-area">
+                        </div>
+                        {{-- <div class="navigation-area">
                         <div class="row">
                             <div
                                 class="col-lg-6 col-md-6 col-12 nav-left flex-row d-flex justify-content-start align-items-center">
@@ -141,7 +142,7 @@
                         </div>
                     </div> --}}
 
-                    {{-- <div class="comments-area">
+                        {{-- <div class="comments-area">
                         <h4>05 Comments</h4>
                         <div class="comment-list">
                             <div class="single-comment justify-content-between d-flex">
@@ -239,34 +240,37 @@
                             </div>
                         </div>
                     </div> --}}
-                    <div class="comment-form">
-                        <h4>Leave a Reply</h4>
-                        <form>
-                            <div class="form-group form-inline">
-                                <div class="form-group col-lg-6 col-md-6 name">
-                                    <input type="text" class="form-control" id="name"
-                                        placeholder="Enter Name" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter Name'">
+                        <div class="comment-form" style="margin-top:364px;">
+                            <h4>Leave a Reply</h4>
+                            <form method="post" enctype="multipart/form-data" action="{{ route('blogs.store') }}">
+                                {{ csrf_field() }}
+                                <div class="form-group form-inline">
+                                    <div class="form-group col-lg-6 col-md-6 name">
+                                        <input type="text" class="form-control" name="name" id="name"
+                                            placeholder="Enter Name" onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Enter Name'">
+                                    </div>
+                                    <div class="form-group col-lg-6 col-md-6 email">
+                                        <input type="email" class="form-control" name="email" id="email"
+                                            placeholder="Enter email address" onfocus="this.placeholder = ''"
+                                            onblur="this.placeholder = 'Enter email address'">
+                                    </div>
                                 </div>
-                                <div class="form-group col-lg-6 col-md-6 email">
-                                    <input type="email" class="form-control" id="email"
-                                        placeholder="Enter email address" onfocus="this.placeholder = ''"
-                                        onblur="this.placeholder = 'Enter email address'">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" name="subject" id="subject"
+                                        placeholder="Subject" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Subject'">
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <input type="text" class="form-control" id="subject" placeholder="Subject"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Subject'">
-                            </div>
-                            <div class="form-group">
-                                <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege"
-                                    onfocus="this.placeholder = ''" onblur="this.placeholder = 'Messege'" required=""></textarea>
-                            </div>
-                            <a href="#" class="primary-btn submit_btn">Post Comment</a>
-                        </form>
+                                <div class="form-group">
+                                    <textarea class="form-control mb-10" rows="5" name="message" placeholder="Messege" onfocus="this.placeholder = ''"
+                                        onblur="this.placeholder = 'Messege'" required=""></textarea>
+                                </div>
+                                {{-- <a href="#" class="primary-btn submit_btn">Post Comment</a> --}}
+                                <button type="submit" class="primary-btn submit_btn">Post Comment</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-                {{-- <div class="col-lg-4">
+                    {{-- <div class="col-lg-4">
                     <div class="blog_right_sidebar">
                         <aside class="single_sidebar_widget search_widget">
                             <div class="input-group">
@@ -426,8 +430,8 @@
                         </aside>
                     </div>
                 </div> --}}
+                </div>
             </div>
-        </div>
         @endforeach
 
     </section>

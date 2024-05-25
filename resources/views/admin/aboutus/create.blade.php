@@ -22,7 +22,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Add Blog</h4>
+                        <h4 class="page-title">Add About Us Details Here</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -44,8 +44,7 @@
                 </div>
             @endif
             <div class="container-fluid">
-                {{-- <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data"> --}}
-                    <form action="{{ url('admin/post') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('admin/aboutus') }}" method="post" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     @method('POST')
                     <div class="row">
@@ -53,14 +52,7 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Text Editor</h4>
-                                    <div id="titles">
-                                        <input type="text" id="titleheader" name="title" class="form-control"
-                                            id="exampleFormControlInput1" placeholder="Enter the Title">
 
-                                    </div>
-                                    <input type="hidden" id="title" name="title">
-
-                                    <br><br><br>
                                     <!-- Create the editor container -->
                                     <div id="editor" style="height: 300px;">
 
@@ -68,9 +60,7 @@
                                     <input type="hidden" id="editorContent" name="editorContent">
                                     <br><br><br>
 
-                                    <input type="file" name="image">
 
-                                    <br><br><br>
                                     <input type="submit" value="Submit" class="btn btn-success">
                                 </div>
                             </div>
@@ -110,25 +100,20 @@
         });
     </script>
 
-    {{-- scripts added by me --}}
-    {{-- <script>
-        var form = document.querySelector('form');
-        form.onsubmit = function() {
-            var editorHtml = document.querySelector('#titles').innerHTML;
-            document.querySelector('#title').value = editorHtml;
-        };
-    </script>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            var form = document.querySelector('form');
-            form.addEventListener('submit', function() {
-                var editorHtml = document.querySelector('#titles').innerHTML;
-                document.querySelector('#title').value = editorHtml;
+            var quill = new Quill('#editor', {
+                theme: 'snow'
             });
+
+            var form = document.getElementById('editorForm');
+            form.onsubmit = function() {
+                var editorContent = quill.getText().trim();
+                document.getElementById('editorContent').value = editorContent;
+            };
         });
-    </script> --}}
-    {{-- till here added by me --}}
+    </script>
 </body>
 
 </html>

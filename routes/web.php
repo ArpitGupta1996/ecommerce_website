@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactAdminController;
 use App\Http\Controllers\Admin\PostController;
@@ -39,6 +41,11 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
         Route::resource('contactadmin', ContactAdminController::class);
         Route::get('contactdetails', [ContactAdminController::class, 'contactdetails']);
+
+        Route::resource('products', AdminProductController::class);
+
+
+        Route::resource('aboutus', AboutUsController::class);
     });
 });
 
@@ -62,8 +69,15 @@ Route::prefix('blog')->group(function () {
     Route::get('searchblog', [BlogController::class,'search'])->name('blog.search');
 });
 ############## till here blog controller section ###################
-Route::resource('comment', CommentController::class);
+// Route::resource('comment', CommentController::class);
+
+### About Us Data on web starts here #######
+Route::get('/about-us', [App\Http\Controllers\Admin\AboutUsController::class, 'getaboutus']);
+######### till here about us data ##########
 
 ######### Contact Controller section starts from here#########
 Route::resource('contact', ContactController::class);
 ########### till here contact controller section ###########
+
+
+

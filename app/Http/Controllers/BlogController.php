@@ -71,10 +71,7 @@ class BlogController extends Controller
 
     public function blogdetail(Request $request, $id)
     {
-        // return $id;
         $data = Blog::where('id', $id)->get();
-
-        // return $data;
         return view('blog.blogdetail', compact('data'));
     }
 
@@ -87,10 +84,10 @@ class BlogController extends Controller
         $searchTerm = $request->input('search'); // Get the search term from the request
         $results = Blog::where('title', 'LIKE', '%' . $searchTerm . '%')->get();
         // $blog = Blog::paginate(2);
-        return $results;
+        // return $results;
 
         // return redirect()->back();
 
-        return view('blog.index', compact('results'));
+        return view('blog.index', compact(['searchTerm','results']));
     }
 }

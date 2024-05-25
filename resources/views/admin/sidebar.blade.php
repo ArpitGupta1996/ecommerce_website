@@ -6,7 +6,16 @@
             <ul id="sidebarnav" class="p-t-30">
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href=""
                         aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
-                            class="hide-menu">Dashboard</span></a></li>
+                            class="hide-menu">Dashboard</span></a>
+                </li>
+
+                {{-- about us details start from here --}}
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                        href="{{ url('admin/aboutus') }}" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span
+                            class="hide-menu">About Us</span></a>
+                </li>
+                {{-- till here for about us --}}
+
                 {{-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">User</span></a></li> --}}
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
                         href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span
@@ -33,11 +42,27 @@
                 </li>
 
 
+                {{-- product list for admin starts here --}}
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
+                        href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span
+                            class="hide-menu">Products </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+                        <li class="sidebar-item"><a href="{{ route('products.create') }}" class="sidebar-link"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu"> Add Product </span></a>
+                        </li>
+                        <li class="sidebar-item"><a href="{{ route('products.index') }}" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu"> Product List </span></a>
+                        </li>
+                    </ul>
+                </li>
+                {{-- till here product list of admin --}}
+
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                         href="{{ url('admin/post') }}" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span
-                            class="hide-menu">Post</span></a></li>
-
+                            class="hide-menu">Post</span></a>
                 </li>
+
+
 
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
                         href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span

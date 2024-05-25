@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Products;
 use Illuminate\Http\Request;
 
 class ShopController extends Controller
@@ -64,7 +65,9 @@ class ShopController extends Controller
 
 
     public function category(Request $request){
-        return view('shop.category');
+        $products = Products::all();
+        // return $products;
+        return view('shop.category', compact('products'));
     }
 
     public function productdetail(Request $request){
