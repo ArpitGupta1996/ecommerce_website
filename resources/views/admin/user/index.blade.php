@@ -70,8 +70,8 @@
                                 <h5 class="card-title">User's List</h5>
                                 <div>
                                     <a href="{{ route('user.create') }}">
-                                    <button type="submit" class="btn btn-primary" style="margin-left:900px;">Add
-                                        User</button>
+                                        <button type="submit" class="btn btn-primary" style="margin-left:789px;">Add
+                                            User</button>
                                     </a>
                                 </div>
                                 <div class="table-responsive">
@@ -94,7 +94,7 @@
                                                     <td>{{ $datas->user_type }}</td>
                                                     <td>{{ $datas->email }}</td>
                                                     <td>{{ $datas->number }}</td>
-                                                    <td>
+                                                    <td style="display: flex; align-items: center; gap: 10px;">
                                                         <a href="{{ route('user.edit', $datas->id) }}">
                                                             <i class="m-r-10 mdi mdi-account-edit"></i>
                                                         </a>
@@ -104,7 +104,8 @@
                                                             method="POST">
                                                             @csrf
                                                             @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger" onclick="return confirmDelete();">
+                                                            <button type="submit" class="btn btn-danger"
+                                                                onclick="return confirmDelete();">
                                                                 <i class="m-r-10 mdi mdi-delete"></i> Delete
                                                             </button>
                                                         </form>

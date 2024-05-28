@@ -26,9 +26,33 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
+// Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
 
-    Route::prefix('admin')->group(function () {
+//     Route::prefix('admin')->group(function () {
+//         Route::get('/dashboard', function () {
+//             return view('dashboard');
+//         })->name('dashboard');
+
+//         Route::resource('user', UserController::class);
+
+//         Route::resource('category', CategoryController::class);
+
+//         Route::resource('post', PostController::class);
+
+//         Route::resource('contactadmin', ContactAdminController::class);
+//         Route::get('contactdetails', [ContactAdminController::class, 'contactdetails']);
+
+//         Route::resource('products', AdminProductController::class);
+
+
+//         Route::resource('aboutus', AboutUsController::class);
+//     });
+// });
+
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])
+    ->prefix('admin')
+    ->group(function () {
+
         Route::get('/dashboard', function () {
             return view('dashboard');
         })->name('dashboard');
@@ -44,10 +68,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',
 
         Route::resource('products', AdminProductController::class);
 
-
         Route::resource('aboutus', AboutUsController::class);
     });
-});
 
 Route::get('/', function () {
     return view('welcome');
@@ -56,7 +78,7 @@ Route::get('/', function () {
 ######## Shop Header section starts from here ############
 Route::resource('shop', ShopController::class);
 Route::get('/shopcategory', [ShopController::class, 'category'])->name('shopcategory');
-Route::get('/productdetail', [ShopController::class, 'productdetail'])->name('productdetail');
+Route::get('/productdetail/{id}', [ShopController::class, 'productdetail']);
 Route::get('/productcheckout', [ShopController::class, 'productcheckout'])->name('productcheckout');
 Route::get('/shoppingcart', [ShopController::class, 'shoppingcart'])->name('shoppingcart');
 Route::get('/shop-confirmation', [ShopController::class, 'shopconfirmation'])->name('shopconfirmation');
@@ -66,7 +88,7 @@ Route::get('/shop-confirmation', [ShopController::class, 'shopconfirmation'])->n
 Route::prefix('blog')->group(function () {
     Route::resource('blogs', BlogController::class);
     Route::get('/blogdetail/{id}', [BlogController::class, 'blogdetail'])->name('blogdetail');
-    Route::get('searchblog', [BlogController::class,'search'])->name('blog.search');
+    Route::get('searchblog', [BlogController::class, 'search'])->name('blog.search');
 });
 ############## till here blog controller section ###################
 // Route::resource('comment', CommentController::class);
@@ -78,6 +100,3 @@ Route::get('/about-us', [App\Http\Controllers\Admin\AboutUsController::class, 'g
 ######### Contact Controller section starts from here#########
 Route::resource('contact', ContactController::class);
 ########### till here contact controller section ###########
-
-
-

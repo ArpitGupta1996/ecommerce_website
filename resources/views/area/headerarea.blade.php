@@ -20,8 +20,8 @@
                                 aria-haspopup="true" aria-expanded="false">Shop</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item"><a class="nav-link" href="{{ route('shopcategory') }}">Shop Category</a></li>
-                                <li class="nav-item"><a class="nav-link" href="{{ route('productdetail') }}">Product
-                                        Details</a></li>
+                                {{-- <li class="nav-item"><a class="nav-link" href="{{ route('productdetail') }}">Product
+                                        Details</a></li> --}}
                                 <li class="nav-item"><a class="nav-link" href="{{ route('productcheckout') }}">Product Checkout</a>
                                 </li>
                                 <li class="nav-item"><a class="nav-link" href="{{ route('shoppingcart') }}">Shopping Cart</a></li>

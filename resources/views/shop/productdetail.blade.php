@@ -33,7 +33,7 @@
                 <div class="col-lg-6">
                     <div class="s_Product_carousel">
                         <div class="single-prd-item">
-                            <img class="img-fluid" src="{{ asset('theme/img/category/s-p1.jpg') }}" alt="">
+                            <img class="img-fluid" src="{{ asset('theme/img/category' .'/'.$data->image) }}" alt="">
                         </div>
                         <div class="single-prd-item">
                             <img class="img-fluid" src="{{ asset('theme/img/category/s-p1.jpg') }}" alt="">
@@ -45,29 +45,23 @@
                 </div>
                 <div class="col-lg-5 offset-lg-1">
                     <div class="s_product_text">
-                        <h3>Faded SkyBlu Denim Jeans</h3>
-                        <h2>$149.99</h2>
+                        <h3>{{ $data->name }}</h3>
+                        <h2>Rs. {{ $data->price }}</h2>
                         <ul class="list">
                             <li><a class="active" href="#"><span>Category</span> : Household</a></li>
                             <li><a href="#"><span>Availibility</span> : In Stock</a></li>
                         </ul>
-                        <p>Mill Oil is an innovative oil filled radiator with the most modern technology. If you are
-                            looking for
-                            something that can make your interior look awesome, and at the same time give you the
-                            pleasant warm feeling
-                            during the winter.</p>
+                        <p>{{ $data->description }}</p>
                         <div class="product_count">
                             <label for="qty">Quantity:</label>
                             <input type="text" name="qty" id="sst" maxlength="12" value="1"
                                 title="Quantity:" class="input-text qty">
                             <button
                                 onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                class="increase items-count" type="button"><i
-                                    class="lnr lnr-chevron-up"></i></button>
+                                class="increase items-count" type="button"><i class="lnr lnr-chevron-up"></i></button>
                             <button
                                 onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                class="reduced items-count" type="button"><i
-                                    class="lnr lnr-chevron-down"></i></button>
+                                class="reduced items-count" type="button"><i class="lnr lnr-chevron-down"></i></button>
                         </div>
                         <div class="card_area d-flex align-items-center">
                             <a class="primary-btn" href="#">Add to Cart</a>
@@ -75,6 +69,7 @@
                             <a class="icon_btn" href="#"><i class="lnr lnr lnr-heart"></i></a>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -104,34 +99,8 @@
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab">
-                    <p>Beryl Cook is one of Britain’s most talented and amusing artists .Beryl’s pictures feature women
-                        of all shapes
-                        and sizes enjoying themselves .Born between the two world wars, Beryl Cook eventually left
-                        Kendrick School in
-                        Reading at the age of 15, where she went to secretarial school and then into an insurance
-                        office. After moving to
-                        London and then Hampton, she eventually married her next door neighbour from Reading, John Cook.
-                        He was an
-                        officer in the Merchant Navy and after he left the sea in 1956, they bought a pub for a year
-                        before John took a
-                        job in Southern Rhodesia with a motor company. Beryl bought their young son a box of
-                        watercolours, and when
-                        showing him how to use it, she decided that she herself quite enjoyed painting. John
-                        subsequently bought her a
-                        child’s painting set for her birthday and it was with this that she produced her first
-                        significant work, a
-                        half-length portrait of a dark-skinned lady with a vacant expression and large drooping breasts.
-                        It was aptly
-                        named ‘Hangover’ by Beryl’s husband and</p>
-                    <p>It is often frustrating to attempt to plan meals that are designed for one. Despite this fact, we
-                        are seeing
-                        more and more recipe books and Internet websites that are dedicated to the act of cooking for
-                        one. Divorce and
-                        the death of spouses or grown children leaving for college are all reasons that someone
-                        accustomed to cooking for
-                        more than one would suddenly need to learn how to adjust all the cooking practices utilized
-                        before into a
-                        streamlined plan of cooking that is more efficient for one person creating less</p>
+                    <p>{{ $data->description }}</p>
+
                 </div>
                 <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                     <div class="table-responsive">
@@ -142,7 +111,7 @@
                                         <h5>Width</h5>
                                     </td>
                                     <td>
-                                        <h5>128mm</h5>
+                                        <h5>{{ $data->width }}</h5>
                                     </td>
                                 </tr>
                                 <tr>
@@ -150,7 +119,7 @@
                                         <h5>Height</h5>
                                     </td>
                                     <td>
-                                        <h5>508mm</h5>
+                                        <h5>{{ $data->height }}</h5>
                                     </td>
                                 </tr>
                                 <tr>
@@ -158,7 +127,7 @@
                                         <h5>Depth</h5>
                                     </td>
                                     <td>
-                                        <h5>85mm</h5>
+                                        <h5>{{ $data->depth }}</h5>
                                     </td>
                                 </tr>
                                 <tr>
@@ -166,7 +135,7 @@
                                         <h5>Weight</h5>
                                     </td>
                                     <td>
-                                        <h5>52gm</h5>
+                                        <h5>{{ $data->weight }}</h5>
                                     </td>
                                 </tr>
                                 <tr>
@@ -174,7 +143,7 @@
                                         <h5>Quality checking</h5>
                                     </td>
                                     <td>
-                                        <h5>yes</h5>
+                                        <h5>{{ $data->quality_checking }}</h5>
                                     </td>
                                 </tr>
                                 <tr>
@@ -579,7 +548,8 @@
                 <div class="col-lg-3">
                     <div class="ctg-right">
                         <a href="#" target="_blank">
-                            <img class="img-fluid d-block mx-auto" src="{{ asset('theme/img/category/c5.jpg') }}" alt="">
+                            <img class="img-fluid d-block mx-auto" src="{{ asset('theme/img/category/c5.jpg') }}"
+                                alt="">
                         </a>
                     </div>
                 </div>

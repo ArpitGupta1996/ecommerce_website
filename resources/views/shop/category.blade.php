@@ -284,7 +284,7 @@
                         </select>
                     </div>
                     <div class="pagination">
-                        <a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left"
+                        {{-- <a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left"
                                 aria-hidden="true"></i></a>
                         <a href="#" class="active">1</a>
                         <a href="#">2</a>
@@ -292,7 +292,10 @@
                         <a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                         <a href="#">6</a>
                         <a href="#" class="next-arrow"><i class="fa fa-long-arrow-right"
-                                aria-hidden="true"></i></a>
+                                aria-hidden="true"></i></a> --}}
+
+                        {{ $products->links() }}
+
                     </div>
                 </div>
                 <!-- End Filter Bar -->
@@ -306,34 +309,36 @@
                                     @foreach ($productChunk as $p)
                                         <div class="col-lg-4 col-md-6">
                                             <div class="single-product">
-                                                <img class="img-fluid"
-                                                    src="{{ URL::to('products') . '/' . $p->image }}" alt="image"
-                                                    width="auto" height="auto">
-                                                <div class="product-details">
-                                                    <h6>{{ $p->name }}</h6>
-                                                    <div class="price">
-                                                        <h6>Rs {{ $p->price }}</h6>
-                                                        <h6 class="l-through">$210.00</h6>
+                                                <a href="{{ url('productdetail' . '/' . $p->id) }}">
+                                                    <img class="img-fluid"
+                                                        src="{{ URL::to('products') . '/' . $p->image }}"
+                                                        alt="image" width="auto" height="auto">
+                                                    <div class="product-details">
+                                                        <h6>{{ $p->name }}</h6>
+                                                        <div class="price">
+                                                            <h6>Rs {{ $p->price }}</h6>
+                                                            <h6 class="l-through">$210.00</h6>
+                                                        </div>
+                                                        <div class="prd-bottom">
+                                                            <a href="" class="social-info">
+                                                                <span class="ti-bag"></span>
+                                                                <p class="hover-text">add to bag</p>
+                                                            </a>
+                                                            <a href="" class="social-info">
+                                                                <span class="lnr lnr-heart"></span>
+                                                                <p class="hover-text">Wishlist</p>
+                                                            </a>
+                                                            <a href="" class="social-info">
+                                                                <span class="lnr lnr-sync"></span>
+                                                                <p class="hover-text">compare</p>
+                                                            </a>
+                                                            <a href="" class="social-info">
+                                                                <span class="lnr lnr-move"></span>
+                                                                <p class="hover-text">view more</p>
+                                                            </a>
+                                                        </div>
                                                     </div>
-                                                    <div class="prd-bottom">
-                                                        <a href="" class="social-info">
-                                                            <span class="ti-bag"></span>
-                                                            <p class="hover-text">add to bag</p>
-                                                        </a>
-                                                        <a href="" class="social-info">
-                                                            <span class="lnr lnr-heart"></span>
-                                                            <p class="hover-text">Wishlist</p>
-                                                        </a>
-                                                        <a href="" class="social-info">
-                                                            <span class="lnr lnr-sync"></span>
-                                                            <p class="hover-text">compare</p>
-                                                        </a>
-                                                        <a href="" class="social-info">
-                                                            <span class="lnr lnr-move"></span>
-                                                            <p class="hover-text">view more</p>
-                                                        </a>
-                                                    </div>
-                                                </div>
+                                                </a>
                                             </div>
                                         </div>
                                     @endforeach
@@ -452,7 +457,7 @@
                         </select>
                     </div>
                     <div class="pagination">
-                        <a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left"
+                        {{-- <a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left"
                                 aria-hidden="true"></i></a>
                         <a href="#" class="active">1</a>
                         <a href="#">2</a>
@@ -460,7 +465,9 @@
                         <a href="#" class="dot-dot"><i class="fa fa-ellipsis-h" aria-hidden="true"></i></a>
                         <a href="#">6</a>
                         <a href="#" class="next-arrow"><i class="fa fa-long-arrow-right"
-                                aria-hidden="true"></i></a>
+                                aria-hidden="true"></i></a> --}}
+
+                        {{ $products->links() }}
                     </div>
                 </div>
                 <!-- End Filter Bar -->

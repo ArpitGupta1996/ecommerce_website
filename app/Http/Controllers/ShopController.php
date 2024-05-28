@@ -65,13 +65,20 @@ class ShopController extends Controller
 
 
     public function category(Request $request){
-        $products = Products::all();
+        // $products = Products::all();
+        $products = Products::orderBy('id','desc')->paginate(5);
         // return $products;
         return view('shop.category', compact('products'));
     }
 
-    public function productdetail(Request $request){
-        return view('shop.productdetail');
+    public function productdetail(Request $request, $id){
+
+        // return 'here';
+        // return $id;
+        $data = Products::where('id', $id)->first();
+        // $data = Products::findOrFail($id);
+        // return $data;
+        return view('shop.productdetail', compact('data'));
     }
 
 
