@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Blog;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 
 class BlogController extends Controller
@@ -89,5 +90,20 @@ class BlogController extends Controller
         // return redirect()->back();
 
         return view('blog.index', compact(['searchTerm','results']));
+    }
+
+
+    public function comment(Request $request, $id){
+        // return $id;
+
+        $comment_data = Comment::create([
+            'post_id' => $id,
+            'name' => $request->name,
+            'email' => $request->email,
+            'subject' => $request->subject,
+            'message' => $request->message
+        ]);
+
+        return redirect()->back();
     }
 }

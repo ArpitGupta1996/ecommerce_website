@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\AboutUsController;
+use App\Http\Controllers\Admin\AdminCommentController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -8,7 +9,6 @@ use App\Http\Controllers\Admin\ContactAdminController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
@@ -69,6 +69,8 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::resource('products', AdminProductController::class);
 
         Route::resource('aboutus', AboutUsController::class);
+
+        Route::get('admincomment', [AdminCommentController::class, 'index']);
     });
 
 Route::get('/', function () {
@@ -89,9 +91,9 @@ Route::prefix('blog')->group(function () {
     Route::resource('blogs', BlogController::class);
     Route::get('/blogdetail/{id}', [BlogController::class, 'blogdetail'])->name('blogdetail');
     Route::get('searchblog', [BlogController::class, 'search'])->name('blog.search');
+    Route::post('/comment/{id}',[BlogController::class,'comment']);
 });
-############## till here blog controller section ###################
-// Route::resource('comment', CommentController::class);
+
 
 ### About Us Data on web starts here #######
 Route::get('/about-us', [App\Http\Controllers\Admin\AboutUsController::class, 'getaboutus']);

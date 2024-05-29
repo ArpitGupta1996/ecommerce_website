@@ -74,6 +74,24 @@
                                             User</button>
                                     </a>
                                 </div>
+
+                                <div class="col-sm-3">
+                                    <a class="btn btn-secoundary btn-sm" href="{{ url('/') . '/user.xlsx' }}">
+                                        <button type="submit" class="btn btn-primary">
+                                            View Sample Excel
+                                        </button>
+                                    </a>
+
+                                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                                        @csrf
+                                        <input class="form-control" type="file" name="file" id="fileToUpload"
+                                            required="true">
+
+                                        <button type="submit" class="btn btn-success">{{ __('Import') }}</button>
+                                    </form>
+
+                                </div>
+
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>

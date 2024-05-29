@@ -16,4 +16,8 @@ class Comment extends Model
         'subject',
         'message'
     ];
+
+    public function post(){
+        return $this->belongsTo(Blog::class);
+    }
 }

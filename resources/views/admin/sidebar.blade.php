@@ -11,8 +11,8 @@
 
                 {{-- about us details start from here --}}
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                        href="{{ url('admin/aboutus') }}" aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span
-                            class="hide-menu">About Us</span></a>
+                        href="{{ url('admin/aboutus') }}" aria-expanded="false"><i
+                            class="mdi mdi-chart-bubble"></i><span class="hide-menu">About Us</span></a>
                 </li>
                 {{-- till here for about us --}}
 
@@ -62,7 +62,10 @@
                             class="hide-menu">Post</span></a>
                 </li>
 
-
+                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark" href="{{ url('admin/admincomment') }}"
+                        aria-expanded="false"><i class="mdi mdi-chart-bubble"></i><span
+                            class="hide-menu">Comment</span></a>
+                </li>
 
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
                         href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span
@@ -72,7 +75,8 @@
                                     class="mdi mdi-note-outline"></i><span class="hide-menu"> Add Website Contact Info
                                 </span></a></li>
                         <li class="sidebar-item"><a href="{{ url('admin/contactdetails') }}" class="sidebar-link"><i
-                                    class="mdi mdi-note-plus"></i><span class="hide-menu"> Contact User List </span></a>
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu"> Contact User List
+                                </span></a>
                         </li>
                     </ul>
                 </li>

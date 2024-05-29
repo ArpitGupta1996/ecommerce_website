@@ -1,27 +1,32 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Blog;
+use App\Http\Controllers\Controller;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class AdminCommentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        // return 'here';
+        $comment = Comment::with('post')->get();
+
+        // return $comment;
+
+        return view('admin.comment.index', compact('comment'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(Request $request)
+    public function create()
     {
-        return $request;
+        //
     }
 
     /**
@@ -29,16 +34,7 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-        // $blog = Blog::where('id', $request->id)->get();
-
-        // return $blog;
-
-        $data = Comment::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'subject' =>  $request->subject,
-            'message' => $request->message
-        ]);
+        //
     }
 
     /**

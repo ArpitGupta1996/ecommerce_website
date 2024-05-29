@@ -16,4 +16,9 @@ class Blog extends Model
         'created_by'
     ];
 
+
+    public function comments(){
+        return $this->hasMany(Comment::class);
+    }
+
 }

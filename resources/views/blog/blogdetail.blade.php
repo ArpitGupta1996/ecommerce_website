@@ -242,7 +242,7 @@
                     </div> --}}
                         <div class="comment-form" style="margin-top:364px;">
                             <h4>Leave a Reply</h4>
-                            <form method="post" enctype="multipart/form-data" action="{{ route('blogs.store') }}">
+                            <form method="post" enctype="multipart/form-data" action="{{ url('blog/comment' . '/' . $d->id) }}">
                                 {{ csrf_field() }}
                                 <div class="form-group form-inline">
                                     <div class="form-group col-lg-6 col-md-6 name">
