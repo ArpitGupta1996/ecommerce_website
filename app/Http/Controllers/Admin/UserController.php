@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Imports\UsersImport;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -109,5 +111,15 @@ class UserController extends Controller
         $data = User::where('id', $id)->delete();
 
         return redirect()->back();
+    }
+
+    public function import(Request $request){
+        // $request->validate([
+        //     'file' => 'required|mimes:xlsx,csv'
+        // ]);
+
+        Excel::import(new UsersImport, $request->file('file'));
+
+        return back()->with('success', 'All good!');
     }
 }

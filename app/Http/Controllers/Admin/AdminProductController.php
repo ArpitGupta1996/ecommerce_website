@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Imports\ProductsImport;
 use App\Models\Products;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminProductController extends Controller
 {
@@ -161,5 +163,15 @@ class AdminProductController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function import(Request $request){
+        // $request->validate([
+        //     'file' => 'required|mimes:xlsx,csv'
+        // ]);
+
+        Excel::import(new ProductsImport, $request->file('file'));
+
+        return back()->with('success', 'All good!');
     }
 }

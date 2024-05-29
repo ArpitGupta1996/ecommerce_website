@@ -82,7 +82,8 @@
                                         </button>
                                     </a>
 
-                                    <form class="form-horizontal" action="" method="post" enctype="multipart/form-data">
+                                    <form class="form-horizontal" action="{{ url('admin/import') }}" method="post"
+                                        enctype="multipart/form-data">
                                         @csrf
                                         <input class="form-control" type="file" name="file" id="fileToUpload"
                                             required="true">

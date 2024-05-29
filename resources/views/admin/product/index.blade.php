@@ -77,9 +77,33 @@
                         <div class="card">
                             <div class="card-body">
                                 {{-- <h5 class="card-title">Basic Datatable</h5> --}}
-                                <a href="{{ url('admin/products/create') }}">
-                                    <button type="submit" class="btn btn-secondary">Add Products</button>
-                                </a>
+                                <div>
+
+                                    <a href="{{ url('admin/products/create') }}">
+                                        <button type="submit" class="btn btn-secondary" style="margin-left:789px;">Add
+                                            Products</button>
+                                    </a>
+
+
+                                </div>
+
+                                <div class="col-sm-3">
+                                    <a class="btn btn-secoundary btn-sm" href="{{ url('/') . '/product.xlsx' }}">
+                                        <button type="submit" class="btn btn-primary">
+                                            View Sample Excel
+                                        </button>
+                                    </a>
+
+                                    <form class="form-horizontal" action="{{ url('admin/import-product') }}" method="post"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <input class="form-control" type="file" name="file" id="fileToUpload"
+                                            required="true">
+
+                                        <button type="submit" class="btn btn-success">{{ __('Import') }}</button>
+                                    </form>
+
+                                </div>
 
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">

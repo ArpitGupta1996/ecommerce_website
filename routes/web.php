@@ -71,6 +71,9 @@ Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified']
         Route::resource('aboutus', AboutUsController::class);
 
         Route::get('admincomment', [AdminCommentController::class, 'index']);
+
+        Route::post('/import',[UserController::class,'import']);
+        Route::post('/import-product',[AdminProductController::class,'import']);
     });
 
 Route::get('/', function () {
