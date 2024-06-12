@@ -49,7 +49,7 @@ use Illuminate\Support\Facades\Route;
 //     });
 // });
 
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified'])
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'preventbackhistory'])
     ->prefix('admin')
     ->group(function () {
 
@@ -88,6 +88,11 @@ Route::get('/productcheckout', [ShopController::class, 'productcheckout'])->name
 Route::get('/shoppingcart', [ShopController::class, 'shoppingcart'])->name('shoppingcart');
 Route::get('/shop-confirmation', [ShopController::class, 'shopconfirmation'])->name('shopconfirmation');
 ############  till here shop header section ####################
+
+######## Product Cart functionality starts here added by me today ##########################
+Route::get('add-to-cart/{id}', [ShopController::class, 'addToCart']);
+Route::patch('update-cart', [ShopController::class, 'update'])->name('update.cart');
+############### till here for the prodcut cart functionality ##############
 
 ############# Blog controller section starts from here ################
 Route::prefix('blog')->group(function () {

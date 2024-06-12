@@ -36,6 +36,15 @@ class PostController extends Controller
         //    dd('store function');
         // return $request;
 
+        // $validated = $request->validate([
+        //     'title' => 'required|string|max:255',
+        //     'editorContent' => 'required|string',
+        //     'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        // ]);
+
+        // Debugging: Log the request data
+        // Log::info($request->all());
+
         if($request->hasFile('image')){
             $image = $request->file('image');
             $image_name = time() . '_' . $image->getClientOriginalName();

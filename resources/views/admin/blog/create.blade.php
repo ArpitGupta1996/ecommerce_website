@@ -45,7 +45,8 @@
             @endif
             <div class="container-fluid">
                 {{-- <form action="{{ route('post.store') }}" method="post" enctype="multipart/form-data"> --}}
-                    <form action="{{ url('admin/post') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ url('admin/post') }}" method="post" enctype="multipart/form-data"
+                    class="form-horizontal">
                     {{ csrf_field() }}
                     @method('POST')
                     <div class="row">
@@ -55,15 +56,21 @@
                                     <h4 class="card-title">Text Editor</h4>
                                     <div id="titles">
                                         <input type="text" id="titleheader" name="title" class="form-control"
-                                            id="exampleFormControlInput1" placeholder="Enter the Title">
+                                            placeholder="Enter the Title">
 
                                     </div>
-                                    <input type="hidden" id="title" name="title">
+                                    {{-- <input type="hidden" id="title" name="title"> --}}
 
                                     <br><br><br>
                                     <!-- Create the editor container -->
-                                    <div id="editor" style="height: 300px;">
+                                    {{-- <div id="editor" style="height: 300px;">
+                                        <input type="text" id="editorContent" name="editorContent"
+                                            class="form-control">
 
+                                    </div> --}}
+
+                                    <div id="editor" style="height: 300px;" class="ql-container ql-snow">
+                                        <div class="ql-editor" data-gramm="false" contenteditable="true"></div>
                                     </div>
                                     <input type="hidden" id="editorContent" name="editorContent">
                                     <br><br><br>
@@ -88,28 +95,47 @@
 
     @include('admin.script')
 
-    <script>
+    {{-- <script>
         var form = document.querySelector('form');
         form.onsubmit = function() {
             var editorHtml = document.querySelector('#editor').innerHTML;
             document.querySelector('#editorContent').value = editorHtml;
         };
-    </script>
+    </script> --}}
 
     <script>
+        // alert('arpit');
         document.addEventListener('DOMContentLoaded', function() {
             var form = document.querySelector('form');
             form.addEventListener('submit', function() {
                 // Capture the title input value
                 var titleValue = document.querySelector('#titleheader').value;
+                // alert('arpit');
                 document.querySelector('#title').value = titleValue;
                 // Capture the Quill editor content
-                var editorHtml = document.querySelector('#editor').innerHTML;
-                document.querySelector('#editorContent').value = editorHtml;
+                // var editorHtml = document.querySelector('.ql-editor').innerHTML;
+                alert('hedisnc');
+                // document.querySelector('#editorContent').value = editorHtml;
+
+                form.submit();
             });
         });
     </script>
 
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function() {
+            var form = document.querySelector('form');
+            form.addEventListener('submit', function() {
+                alert('arpit 2');
+                var editorHtml = document.querySelector('.ql-editor').innerHTML;
+                // alert('hedisnc');
+                document.querySelector('#editorContent').value = editorHtml;
+
+                form.submit();
+            });
+        });
+    </script>
     {{-- scripts added by me --}}
     {{-- <script>
         var form = document.querySelector('form');

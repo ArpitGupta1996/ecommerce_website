@@ -73,7 +73,7 @@
                                     <div class="form-group row">
                                         <label for="lname" class="col-sm-3 text-right control-label col-form-label">Email</label>
                                         <div class="col-sm-9">
-                                            <input type="email" class="form-control"  name="{{$data['0']['email']}}" value="{{$data['0']['email']}}" placeholder="Enter email Here" autocomplete="off">
+                                            <input type="email" class="form-control"  name="{{$data['0']['email']}}" value="{{$data['0']['email']}}" readonly>
                                         </div>
                                     </div>
                                     <div class="form-group row">

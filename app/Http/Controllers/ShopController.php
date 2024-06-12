@@ -64,14 +64,16 @@ class ShopController extends Controller
     }
 
 
-    public function category(Request $request){
+    public function category(Request $request)
+    {
         // $products = Products::all();
-        $products = Products::orderBy('id','desc')->paginate(5);
+        $products = Products::orderBy('id', 'desc')->paginate(5);
         // return $products;
         return view('shop.category', compact('products'));
     }
 
-    public function productdetail(Request $request, $id){
+    public function productdetail(Request $request, $id)
+    {
 
         // return 'here';
         // return $id;
@@ -82,15 +84,50 @@ class ShopController extends Controller
     }
 
 
-    public function productcheckout(Request $request){
+    public function productcheckout(Request $request)
+    {
         return view('shop.checkout');
     }
 
-    public function shoppingcart(Request $request){
+    public function shoppingcart(Request $request)
+    {
         return view('shop.shoppingcart');
     }
 
-    public function shopconfirmation(Request $request){
+    public function shopconfirmation(Request $request)
+    {
         return view('shop.confirmation');
+    }
+
+    ###from here I started the add to cart functionality
+    public function addToCart(Request $request, $id)
+    {
+        // return 'here';die;
+        $data = Products::findOrFail($id);
+        // dd($data);
+        $cart = session()->get('cart', []);
+        // console.log('djhxshxsd');
+        if (isset($cart[$id])) {
+            $cart[$id]['quantity']++;
+        } else {
+            $cart[$id] = [
+                'name' => $data->name,
+                'quantity' => 1,
+                'price' => $data->price,
+                'image' => $data->image
+            ];
+        }
+
+        session()->put('cart', $cart);
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
+
+    public function updatecart(Request $request){
+        if($request->id && $request->quantity){
+            $cart = session()->get('cart');
+            $cart[$request->id]['quantity'] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart updated successfully');
+        }
     }
 }

@@ -320,7 +320,7 @@
                                                             <h6 class="l-through">$210.00</h6>
                                                         </div>
                                                         <div class="prd-bottom">
-                                                            <a href="" class="social-info">
+                                                            <a href="{{ url('add-to-cart', $p->id) }}" class="social-info">
                                                                 <span class="ti-bag"></span>
                                                                 <p class="hover-text">add to bag</p>
                                                             </a>
