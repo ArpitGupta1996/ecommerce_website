@@ -26,7 +26,7 @@ use Illuminate\Support\Facades\Route;
 
 
 
-// Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
+// Route::middleware(['auth:sanctum', 'redirect',config('jetstream.auth_session'), 'verified',])->group(function () {
 
 //     Route::prefix('admin')->group(function () {
 //         Route::get('/dashboard', function () {
@@ -49,7 +49,7 @@ use Illuminate\Support\Facades\Route;
 //     });
 // });
 
-Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified', 'preventbackhistory'])
+Route::middleware(['auth:sanctum', 'redirect',config('jetstream.auth_session'), 'verified', 'preventbackhistory'])
     ->prefix('admin')
     ->group(function () {
 

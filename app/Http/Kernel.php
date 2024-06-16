@@ -68,5 +68,7 @@ class Kernel extends HttpKernel
     protected $routeMiddleware = [
         // Other middleware aliases
         'preventbackhistory' => \App\Http\Middleware\PreventBackHistory::class,
+
+        'redirect' => \App\Http\Middleware\RedirectIfAuthenticated::class,
     ];
 }

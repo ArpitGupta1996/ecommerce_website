@@ -14,7 +14,8 @@ class PostController extends Controller
      */
     public function index()
     {
-        $blog = Blog::all();
+        // $blog = Blog::all();
+        $blog = Blog::orderBy('id','desc')->get();
 
         // return $blog;
         return view('admin.blog.index', compact('blog'));

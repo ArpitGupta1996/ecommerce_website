@@ -270,19 +270,20 @@
                 <!-- Start Filter Bar -->
                 <div class="filter-bar d-flex flex-wrap align-items-center">
                     <div class="sorting">
-                        <select>
+                        {{-- <select>
                             <option value="1">Default sorting</option>
                             <option value="1">Default sorting</option>
                             <option value="1">Default sorting</option>
-                        </select>
+                        </select> --}}
+                        Products
                     </div>
-                    <div class="sorting mr-auto">
+                    {{-- <div class="sorting mr-auto">
                         <select>
                             <option value="1">Show 12</option>
                             <option value="1">Show 12</option>
                             <option value="1">Show 12</option>
                         </select>
-                    </div>
+                    </div> --}}
                     <div class="pagination">
                         {{-- <a href="#" class="prev-arrow"><i class="fa fa-long-arrow-left"
                                 aria-hidden="true"></i></a>
