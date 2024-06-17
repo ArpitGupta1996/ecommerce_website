@@ -49,7 +49,7 @@ use Illuminate\Support\Facades\Route;
 //     });
 // });
 
-Route::middleware(['auth:sanctum', 'redirect',config('jetstream.auth_session'), 'verified', 'preventbackhistory'])
+Route::middleware(['auth:sanctum', 'redirect', config('jetstream.auth_session'), 'verified', 'preventbackhistory'])
     ->prefix('admin')
     ->group(function () {
 
@@ -72,8 +72,8 @@ Route::middleware(['auth:sanctum', 'redirect',config('jetstream.auth_session'), 
 
         Route::get('admincomment', [AdminCommentController::class, 'index']);
 
-        Route::post('/import',[UserController::class,'import']);
-        Route::post('/import-product',[AdminProductController::class,'import']);
+        Route::post('/import', [UserController::class, 'import']);
+        Route::post('/import-product', [AdminProductController::class, 'import']);
     });
 
 Route::get('/', function () {
@@ -99,7 +99,7 @@ Route::prefix('blog')->group(function () {
     Route::resource('blogs', BlogController::class);
     Route::get('/blogdetail/{id}', [BlogController::class, 'blogdetail'])->name('blogdetail');
     Route::get('searchblog', [BlogController::class, 'search'])->name('blog.search');
-    Route::post('/comment/{id}',[BlogController::class,'comment']);
+    Route::post('/comment/{id}', [BlogController::class, 'comment']);
 });
 
 
