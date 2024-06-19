@@ -41,102 +41,61 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="{{ asset('theme/img/cart.jpg') }}" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12"
-                                            value="1" title="Quantity:" class="input-text qty">
-                                        <button
-                                            onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i
-                                                class="lnr lnr-chevron-up"></i></button>
-                                        <button
-                                            onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i
-                                                class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="{{ asset('theme/img/cart.jpg') }}" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12"
-                                            value="1" title="Quantity:" class="input-text qty">
-                                        <button
-                                            onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i
-                                                class="lnr lnr-chevron-up"></i></button>
-                                        <button
-                                            onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i
-                                                class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <div class="media">
-                                        <div class="d-flex">
-                                            <img src="{{ asset('theme/img/cart.jpg') }}" alt="">
-                                        </div>
-                                        <div class="media-body">
-                                            <p>Minimalistic shop for multipurpose use</p>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$360.00</h5>
-                                </td>
-                                <td>
-                                    <div class="product_count">
-                                        <input type="text" name="qty" id="sst" maxlength="12"
-                                            value="1" title="Quantity:" class="input-text qty">
-                                        <button
-                                            onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
-                                            class="increase items-count" type="button"><i
-                                                class="lnr lnr-chevron-up"></i></button>
-                                        <button
-                                            onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
-                                            class="reduced items-count" type="button"><i
-                                                class="lnr lnr-chevron-down"></i></button>
-                                    </div>
-                                </td>
-                                <td>
-                                    <h5>$720.00</h5>
-                                </td>
-                            </tr>
+                            @auth
+                                @foreach ($cart->items as $item)
+                                    <tr>
+                                        <td>
+                                            <div class="media">
+                                                <div class="d-flex">
+                                                    <img src="{{ asset('theme/img/cart.jpg') }}" alt="">
+                                                </div>
+                                                <div class="media-body">
+                                                    <p>{{ $item->product->name }}</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            {{-- <h5>{{ $item->price }}</h5> --}}
+                                            <h5 class="item-price" data-price="{{ $item->price }}">Rs. {{ $item->price }}
+                                            </h5>
+                                        </td>
+                                        <td>
+                                            <div class="product_count">
+                                                <input type="number" name="qty" id="sst" maxlength="12"
+                                                    min="1" value="1" title="Quantity:" class="input-text qty"
+                                                    data-price="{{ $item->price }}">
+
+                                                {{-- <button
+                                                    onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) && sst >= 1 ) result.value++;return false;"
+                                                    class="increase items-count" type="button"><i
+                                                        class="lnr lnr-chevron-up"></i></button>
+                                                <button
+                                                    onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 1 ) result.value--;return false;"
+                                                    class="reduced items-count" type="button"><i
+                                                        class="lnr lnr-chevron-down"></i></button> --}}
+
+
+                                                <button onclick="increaseQty();" class="increase items-count"
+                                                    type="button"><i class="lnr lnr-chevron-up"></i></button>
+                                                <button onclick="decreaseQty();" class="reduced items-count"
+                                                    type="button"><i class="lnr lnr-chevron-down"></i></button>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <h5 class="total-price">Rs.{{ $item->price }}</h5>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            @else
+                                <tr>
+                                    <td colspan="4">
+                                        <p>Please <a href="{{ route('login') }}">login</a> to view your cart items.</p>
+                                    </td>
+                                </tr>
+                            @endauth
+
+
+
                             <tr class="bottom_button">
                                 <td>
                                     <a class="gray_btn" href="#">Update Cart</a>
@@ -166,7 +125,7 @@
                                     <h5>Subtotal</h5>
                                 </td>
                                 <td>
-                                    <h5>$2160.00</h5>
+                                    <h5 class="total-price">Rs.{{ $item->price }}</h5>
                                 </td>
                             </tr>
                             <tr class="shipping_area">
@@ -235,6 +194,123 @@
     <!-- End footer Area -->
 
     @include('layouts.script')
+
+    <script>
+        function updatePrice_old() {
+            // var qty = document.getElementById('sst').value;
+            // var pricePerItem = document.querySelector('.item-price').getAttribute('data-price');
+            // var totalPrice = qty * pricePerItem;
+            // document.querySelector('.total-price').innerText = 'Rs.' + totalPrice;
+
+            var result = document.getElementById('sst');
+            var qty = result ? result.value : 0;
+            var itemPriceElement = document.querySelector('.item-price');
+            var pricePerItem = itemPriceElement ? itemPriceElement.getAttribute('data-price') : 0;
+            var totalPriceElement = document.querySelector('.total-price');
+            var totalPrice = qty * pricePerItem;
+
+            if (totalPriceElement) {
+                totalPriceElement.innerText = 'Rs.' + totalPrice;
+            } else {
+                console.error('Total price element not found');
+            }
+        }
+
+        function increaseQty_old() {
+            // var result = document.getElementById('sst');
+            // var sst = result.value;
+            // if (!isNaN(sst) && sst >= 1) {
+            //     result.value++;
+            //     updatePrice();
+            // }
+            // return false;
+
+            var result = document.getElementById('sst');
+            var sst = result ? result.value : 0;
+            if (!isNaN(sst) && sst >= 1) {
+                result.value++;
+                updatePrice();
+            }
+            return false;
+        }
+
+        function decreaseQty_old() {
+            // var result = document.getElementById('sst');
+            // var sst = result.value;
+            // if (!isNaN(sst) && sst > 1) {
+            //     result.value--;
+            //     updatePrice();
+            // }
+            // return false;
+
+            var result = document.getElementById('sst');
+            var sst = result ? result.value : 0;
+            if (!isNaN(sst) && sst > 1) {
+                result.value--;
+                updatePrice();
+            }
+            return false;
+        }
+
+        // document.getElementById('sst').addEventListener('change', updatePrice);
+    </script>
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            function updatePrice() {
+                var result = document.getElementById('sst');
+                if (result) {
+                    var qty = result.value;
+                    var itemPriceElement = document.querySelector('.item-price');
+                    var totalPriceElements = document.querySelectorAll('.total-price');
+
+                    if (itemPriceElement && totalPriceElements.length > 0) {
+                        var pricePerItem = itemPriceElement.getAttribute('data-price');
+                        var totalPrice = qty * pricePerItem;
+                        totalPriceElements.forEach(function(element) {
+                            element.innerText = 'Rs.' + totalPrice;
+                        });
+                    } else {
+                        console.error('Item price or total price elements not found');
+                    }
+                } else {
+                    console.error('Quantity input element not found');
+                }
+            }
+
+            window.increaseQty = function() {
+                var result = document.getElementById('sst');
+                if (result) {
+                    var sst = result.value;
+                    if (!isNaN(sst) && sst >= 1) {
+                        result.value++;
+                        updatePrice();
+                    }
+                } else {
+                    console.error('Quantity input element not found');
+                }
+                return false;
+            }
+
+            window.decreaseQty = function() {
+                var result = document.getElementById('sst');
+                if (result) {
+                    var sst = result.value;
+                    if (!isNaN(sst) && sst > 1) {
+                        result.value--;
+                        updatePrice();
+                    }
+                } else {
+                    console.error('Quantity input element not found');
+                }
+                return false;
+            }
+
+            document.getElementById('sst').addEventListener('change', updatePrice);
+        });
+    </script>
 
 </body>
 

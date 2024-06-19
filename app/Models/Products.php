@@ -24,4 +24,8 @@ class Products extends Model
         'color',
         'discount'
     ];
+
+    public function cartItems(){
+        return $this->hasMany(CartItem::class);
+    }
 }

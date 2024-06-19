@@ -94,7 +94,44 @@ class ShopController extends Controller
 
     public function shoppingcart(Request $request)
     {
-        return view('shop.shoppingcart');
+        // return Auth::id();
+
+        if (Auth::user()) {
+            $user_id = Auth::id();
+
+            // return $user_id;
+
+            $cart = Cart::where('user_id', $user_id)
+                ->with(['items.product'])
+                ->first();
+
+            // return $cart;
+
+            // return $cart->items['0']['product']['name'];
+
+            if (!$cart) {
+                return response()->json(['message' => 'No order Yet !!'], 404);
+            }
+
+            //above one is incorrect
+            // foreach ($cart as $c) { incorrect ones
+            //     return $c->items['0']['product']['name'];
+            // }
+
+            //below one is correct
+            // foreach ($cart->items as $item) {
+            //     // You can access the product name here
+            //     echo $item->product->name;
+            // }
+
+
+
+
+
+            return view('shop.shoppingcart', compact('cart'));
+        } else {
+            return view('shop.shoppingcart');
+        }
     }
 
     public function shopconfirmation(Request $request)
@@ -126,35 +163,43 @@ class ShopController extends Controller
     public function addToCart(Request $request, $id)
     {
         // return 'here';die;
-        $data = Products::findOrFail($id);
-        $user = Auth::user();
 
-        $cart = Cart::firstOrCreate(
-            [
-                // 'user_id' => $user->id
-                'user_id' => '1'
-            ],
-            [
-                'created_at' => now(),
-                'updated_at' => now()
-            ]
-        );
+        if (Auth::user()) {
+            $data = Products::findOrFail($id);
+            $user = Auth::user();
 
-        $cartItem = CartItem::where('cart_id', $cart->id)->where('product_id', $id)->first();
+            // return $user->id;
 
-        if ($cartItem) {
-            $cartItem->quantity += 1;
-            $cartItem->save();
+            $cart = Cart::firstOrCreate(
+                [
+                    // 'user_id' => $user->id
+                    'user_id' => $user->id
+                ],
+                [
+                    'created_at' => now(),
+                    'updated_at' => now()
+                ]
+            );
+
+            $cartItem = CartItem::where('cart_id', $cart->id)->where('product_id', $id)->first();
+
+            if ($cartItem) {
+                $cartItem->quantity += 1;
+                $cartItem->save();
+            } else {
+                CartItem::create([
+                    'cart_id' => $cart->id,
+                    'product_id' => $data->id,
+                    'quantity' => 1,
+                    'price' => $data->price,
+                ]);
+            }
+
+
+            return redirect()->back()->with('success', 'Product added to cart successfully!');
         } else {
-            CartItem::create([
-                'cart_id' => $cart->id,
-                'product_id' => $data->id,
-                'quantity' => 1,
-                'price' => $data->price,
-            ]);
+            return redirect()->route('login');
         }
-
-        return redirect()->back()->with('success', 'Product added to cart successfully!');
     }
 
     public function updatecart(Request $request)
