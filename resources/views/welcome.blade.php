@@ -22,7 +22,7 @@
     <!-- End category Area -->
 
     <!-- start product Area -->
-   @include('area.startcategoryarea')
+   @include('area.startproductarea')
     <!-- end product Area -->
 
     <!-- Start exclusive deal Area -->

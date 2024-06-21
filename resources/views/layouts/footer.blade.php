@@ -31,8 +31,8 @@
                                 <button class="click-btn btn btn-default"><i class="fa fa-long-arrow-right"
                                         aria-hidden="true"></i></button>
                                 <div style="position: absolute; left: -5000px;">
-                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1"
-                                        value="" type="text">
+                                    <input name="b_36c4fd991d266f23781ded980_aefe40901a" tabindex="-1" value=""
+                                        type="text">
                                 </div>
 
                                 <!-- <div class="col-lg-4 col-md-4">
@@ -48,14 +48,19 @@
                 <div class="single-footer-widget mail-chimp">
                     <h6 class="mb-20">Instragram Feed</h6>
                     <ul class="instafeed d-flex flex-wrap">
-                        <li><img src="{{ asset('theme/img/i1.jpg') }}" alt=""></li>
+                        {{-- <li><img src="{{ asset('theme/img/i1.jpg') }}" alt=""></li>
                         <li><img src="{{ asset('theme/img/i2.jpg') }}" alt=""></li>
                         <li><img src="{{ asset('theme/img/i3.jpg') }}" alt=""></li>
                         <li><img src="{{ asset('theme/img/i4.jpg') }}" alt=""></li>
                         <li><img src="{{ asset('theme/img/i5.jpg') }}" alt=""></li>
                         <li><img src="{{ asset('theme/img/i6.jpg') }}" alt=""></li>
                         <li><img src="{{ asset('theme/img/i7.jpg') }}" alt=""></li>
-                        <li><img src="{{ asset('theme/img/i8.jpg') }}" alt=""></li>
+                        <li><img src="{{ asset('theme/img/i8.jpg') }}" alt=""></li> --}}
+
+                        @for ($i = 1; $i <= 8; $i++)
+                            <li><img src="{{ asset('theme/img/i' . $i . '.jpg') }}"
+                                    alt="Instagram Image {{ $i }}"></li>
+                        @endfor
                     </ul>
                 </div>
             </div>

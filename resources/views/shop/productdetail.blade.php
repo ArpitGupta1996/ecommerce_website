@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="zxx" class="no-js">
-
 @include('layouts.header')
 
 <body>
@@ -33,7 +30,8 @@
                 <div class="col-lg-6">
                     <div class="s_Product_carousel">
                         <div class="single-prd-item">
-                            <img class="img-fluid" src="{{ asset('theme/img/category' .'/'.$data->image) }}" alt="">
+                            <img class="img-fluid" src="{{ asset('theme/img/category' . '/' . $data->image) }}"
+                                alt="">
                         </div>
                         <div class="single-prd-item">
                             <img class="img-fluid" src="{{ asset('theme/img/category/s-p1.jpg') }}" alt="">

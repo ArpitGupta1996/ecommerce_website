@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="zxx" class="no-js">
-
 @include('layouts.header')
 
 <body>

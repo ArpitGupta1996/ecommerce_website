@@ -47,7 +47,8 @@
                                         <td>
                                             <div class="media">
                                                 <div class="d-flex">
-                                                    <img src="{{ asset('theme/img/cart.jpg') }}" alt="">
+                                                    <img src="{{ URL::to('products' . '/' . $item->product->image) }}"
+                                                        alt="" height="100" width="100">
                                                 </div>
                                                 <div class="media-body">
                                                     <p>{{ $item->product->name }}</p>
@@ -97,9 +98,9 @@
 
 
                             <tr class="bottom_button">
-                                <td>
+                                {{-- <td>
                                     <a class="gray_btn" href="#">Update Cart</a>
-                                </td>
+                                </td> --}}
                                 <td>
 
                                 </td>
@@ -175,7 +176,7 @@
                                 </td>
                                 <td>
                                     <div class="checkout_btn_inner d-flex align-items-center">
-                                        <a class="gray_btn" href="#">Continue Shopping</a>
+                                        <a class="gray_btn" href="{{ route('shopcategory') }}">Continue Shopping</a>
                                         <a class="primary-btn" href="#">Proceed to checkout</a>
                                     </div>
                                 </td>

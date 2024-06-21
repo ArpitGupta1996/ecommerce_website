@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminProductController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactAdminController;
+use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BlogController;
@@ -74,6 +75,8 @@ Route::middleware(['auth:sanctum', 'redirect', config('jetstream.auth_session'),
 
         Route::post('/import', [UserController::class, 'import']);
         Route::post('/import-product', [AdminProductController::class, 'import']);
+
+        Route::resource('image', ImageController::class);
     });
 
 Route::get('/', function () {

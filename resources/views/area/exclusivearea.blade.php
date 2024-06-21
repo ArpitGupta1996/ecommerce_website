@@ -34,7 +34,7 @@
                 <div class="active-exclusive-product-slider">
                     <!-- single exclusive carousel -->
                     <div class="single-exclusive-slider">
-                        <img class="img-fluid" src="{{ asset('theme/img/product/e-p1.png') }}" alt="">
+                        {{-- <img class="img-fluid" src="{{ asset('theme/img/product/e-p1.png') }}" alt="">
                         <div class="product-details">
                             <div class="price">
                                 <h6>$150.00</h6>
@@ -46,7 +46,24 @@
                                 <a class="add-btn" href=""><span class="ti-bag"></span></a>
                                 <span class="add-text text-uppercase">Add to Bag</span>
                             </div>
-                        </div>
+                        </div> --}}
+
+                        @foreach ([['img' => 'theme/img/product/e-p1.png', 'price' => 150, 'oldPrice' => 210, 'name' => 'Addidas New Hammer sole for Sports person'], ['img' => 'theme/img/product/e-p2.png', 'price' => 150, 'oldPrice' => 210, 'name' => 'Nike Air Max 2021']] as $product)
+                            <div class="single-exclusive-slider">
+                                <img class="img-fluid" src="{{ asset($product['img']) }}" alt="">
+                                <div class="product-details">
+                                    <div class="price">
+                                        <h6>${{ $product['price'] }}</h6>
+                                        <h6 class="l-through">${{ $product['oldPrice'] }}</h6>
+                                    </div>
+                                    <h4>{{ $product['name'] }}</h4>
+                                    <div class="add-bag d-flex align-items-center justify-content-center">
+                                        <a class="add-btn" href="#"><span class="ti-bag"></span></a>
+                                        <span class="add-text text-uppercase">Add to Bag</span>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                     <!-- single exclusive carousel -->
                     <div class="single-exclusive-slider">

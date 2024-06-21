@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\FrontPageImage;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
@@ -12,7 +13,8 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $data = FrontPageImage::all();
+        return view('admin.images.index', compact('data'));
     }
 
     /**
@@ -20,7 +22,7 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.images.create');
     }
 
     /**
@@ -28,7 +30,17 @@ class ImageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // return $request;
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $image_name = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('front_page_image'), $image_name);
+        }
+
+        $data = FrontPageImage::create(['name' => $image_name]);
+
+        return redirect()->back();
     }
 
     /**
