@@ -88,8 +88,9 @@ class BlogController extends Controller
         // return $results;
 
         // return redirect()->back();
+        $blog = Blog::orderBy('id','desc')->paginate(5);
 
-        return view('blog.index', compact(['searchTerm','results']));
+        return view('blog.index', compact(['searchTerm','results', 'blog']));
     }
 
 
