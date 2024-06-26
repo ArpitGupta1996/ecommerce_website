@@ -16,6 +16,18 @@
                 </li>
                 {{-- till here for about us --}}
 
+                {{-- role section starts from here --}}
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
+                        href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span
+                            class="hide-menu">Roles </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+                        <li class="sidebar-item"><a href="{{ route('role.create') }}" class="sidebar-link"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu"> Add Role </span></a></li>
+                        <li class="sidebar-item"><a href="{{ route('role.index') }}" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu"> Role List </span></a></li>
+                    </ul>
+                </li>
+
                 {{-- <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link" href="index.html" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span class="hide-menu">User</span></a></li> --}}
                 <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
                         href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span

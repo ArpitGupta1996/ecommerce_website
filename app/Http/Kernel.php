@@ -70,5 +70,12 @@ class Kernel extends HttpKernel
         'preventbackhistory' => \App\Http\Middleware\PreventBackHistory::class,
 
         'redirect' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+
+        #role middleware starts from here
+        'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
+
+        'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
+
+        'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
     ];
 }

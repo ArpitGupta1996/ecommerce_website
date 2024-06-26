@@ -30,6 +30,13 @@
     <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
 
 
+    {{-- script added for profile on 25th June 2024 --}}
+    <link href="{{ asset('admintheme/assets/libs/jquery-steps/jquery.steps.css') }}" rel="stylesheet">
+    <link href="{{ asset('admintheme/assets/libs/jquery-steps/steps.css') }}" rel="stylesheet">
+    {{-- script added for profile on 25th June 2024 --}}
+
+
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

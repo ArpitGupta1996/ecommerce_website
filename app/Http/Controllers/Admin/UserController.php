@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Imports\UsersImport;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\Rule;
@@ -43,10 +44,11 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'name' => 'required|string',
             'email' => 'required|email|unique:users,email',
+            'address' => 'required',
             'password' => 'required|string|min:8',
             'c_password' => 'required|string|min:8|same:password',
             'role' => ['required', Rule::in(['1', '2'])],
-            'number' => 'numeric'
+            'number' => 'numeric | required | unique:users,number'
         ]);
 
         if ($validator->fails()) {
@@ -58,9 +60,11 @@ class UserController extends Controller
             User::create([
                 'name' => $request->name,
                 'email' => $request->email,
+                'address' => $request->address,
                 'password' => Hash::make($request->password),
                 'user_type' => $request->role,
-                'number' => $request->number
+                'number' => $request->number,
+                'remember_token' => Hash::make($request->email)
             ]);
         }
 
@@ -113,7 +117,8 @@ class UserController extends Controller
         return redirect()->back();
     }
 
-    public function import(Request $request){
+    public function import(Request $request)
+    {
         // $request->validate([
         //     'file' => 'required|mimes:xlsx,csv'
         // ]);
@@ -121,5 +126,21 @@ class UserController extends Controller
         Excel::import(new UsersImport, $request->file('file'));
 
         return back()->with('success', 'All good!');
+    }
+
+    public function profile(Request $request)
+    {
+        // return 'here';
+
+        // return Auth::id();
+
+        $user = Auth::id();
+
+        // return $user;
+
+        $data = User::where('id', $user)->first();
+
+        // return $data;
+        return view('admin.user.profile', compact('data'));
     }
 }

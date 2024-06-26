@@ -20,7 +20,7 @@
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
-       @include('admin.mainheader')
+        @include('admin.mainheader')
         <!-- ============================================================== -->
         <!-- End Topbar header -->
         <!-- ============================================================== -->
@@ -66,32 +66,56 @@
                 <div class="row justify-content-center">
                     <div class="col-md-6 mx-auto">
                         <div class="card">
-                            <form class="form-horizontal" method="post" enctype="multipart/form-data" action="{{ route('user.store') }}">
+                            <form class="form-horizontal" method="post" enctype="multipart/form-data"
+                                action="{{ route('user.store') }}">
                                 @csrf
                                 <div class="card-body">
                                     <h4 class="card-title">Personal Info</h4>
                                     <div class="form-group row">
-                                        <label for="fname" class="col-sm-3 text-right control-label col-form-label">Name</label>
+                                        <label for="fname"
+                                            class="col-sm-3 text-right control-label col-form-label">Name</label>
                                         <div class="col-sm-9">
-                                            <input type="text" class="form-control" id="fname" name="name" placeholder="Enter Name Here" autocomplete="off">
+                                            <input type="text" class="form-control" id="fname" name="name"
+                                                placeholder="Enter Name Here" autocomplete="off">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Email</label>
+                                        <label for="lname"
+                                            class="col-sm-3 text-right control-label col-form-label">Email</label>
                                         <div class="col-sm-9">
-                                            <input type="email" class="form-control"  name="email" placeholder="Enter email Here" autocomplete="off">
+                                            <input type="email" class="form-control" name="email"
+                                                placeholder="Enter email Here" autocomplete="off">
+
+                                            @error('email')
+                                                <div style="color: red;">{{ $message }}</div>
+                                            @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="lname"
+                                            class="col-sm-3 text-right control-label col-form-label">Address</label>
+                                        <div class="col-sm-9">
+                                            <textarea class="form-control" aria-label="With textarea" name="address"></textarea>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group row">
+                                        <label for="lname"
+                                            class="col-sm-3 text-right control-label col-form-label">Password</label>
+                                        <div class="col-sm-9">
+                                            <input type="password" class="form-control" name="password"
+                                                placeholder="Password Here" autocomplete="new-password">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Password</label>
+                                        <label for="lname"
+                                            class="col-sm-3 text-right control-label col-form-label">Confirm
+                                            Password</label>
                                         <div class="col-sm-9">
-                                            <input type="password" class="form-control"  name="password" placeholder="Password Here" autocomplete="new-password">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="lname" class="col-sm-3 text-right control-label col-form-label">Confirm Password</label>
-                                        <div class="col-sm-9">
-                                            <input type="password" class="form-control" name="c_password" placeholder="Password Here">
+                                            <input type="password" class="form-control" name="c_password"
+                                                placeholder="Password Here">
                                         </div>
                                     </div>
                                     {{-- <div class="form-group row">
@@ -103,7 +127,8 @@
                                     <div class="form-group row">
                                         <label class="col-md-3 m-t-15">Select Role</label>
                                         <div class="col-md-9">
-                                            <select class="select2 form-control custom-select"  name="role" style="width: 100%; height:36px;">
+                                            <select class="select2 form-control custom-select" name="role"
+                                                style="width: 100%; height:36px;">
                                                 <option>Select</option>
                                                 <optgroup>
                                                     <option value="1">Admin</option>
@@ -113,9 +138,15 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="cono1" class="col-sm-3 text-right control-label col-form-label">Contact No</label>
+                                        <label for="cono1"
+                                            class="col-sm-3 text-right control-label col-form-label">Contact No</label>
                                         <div class="col-sm-9">
-                                            <input type="number" class="form-control" id="cono1" placeholder="Contact No Here" name="number">
+                                            <input type="number" class="form-control" id="cono1"
+                                                placeholder="Contact No Here" name="number">
+
+                                            @error('number')
+                                                <div style="color: red;">{{ $message }}</div>
+                                            @enderror
                                         </div>
                                     </div>
 
@@ -138,7 +169,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-           @include('admin.footer')
+            @include('admin.footer')
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->

@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
@@ -74,9 +75,14 @@ Route::middleware(['auth:sanctum', 'redirect', config('jetstream.auth_session'),
         Route::get('admincomment', [AdminCommentController::class, 'index']);
 
         Route::post('/import', [UserController::class, 'import']);
+        Route::get('profile', [UserController::class,'profile']);
+
+
         Route::post('/import-product', [AdminProductController::class, 'import']);
 
         Route::resource('image', ImageController::class);
+
+        Route::resource('role', RoleController::class);
     });
 
 Route::get('/', function () {

@@ -3,7 +3,6 @@
 
 @include('admin.header')
 
-
 <body>
     <!-- ============================================================== -->
     <!-- Preloader - style you can find in spinners.css -->
@@ -42,11 +41,12 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        {{-- <h4 class="page-title">Tables</h4> --}}
+                        <h4 class="page-title">User Profile</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                                    <li class="breadcrumb-item active" aria-current="page">Library</li>
                                 </ol>
                             </nav>
                         </div>
@@ -63,92 +63,45 @@
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
                 <!-- ============================================================== -->
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card">
-                            <div class="card-body">
-                                <h5 class="card-title">User's List</h5>
-                                <div>
-                                    <a href="{{ route('user.create') }}">
-                                        <button type="submit" class="btn btn-primary" style="margin-left:789px;">Add
-                                            User</button>
-                                    </a>
-                                </div>
+                <div class="card">
+                    <div class="card-body wizard-content">
+                        {{-- <h4 class="card-title">Basic Form Example</h4> --}}
+                        <h6 class="card-subtitle"></h6>
+                        <form id="example-form" action="#" class="m-t-40">
+                            <div>
+                                {{-- <h3>Account</h3>
+                                <section>
+                                    <label for="userName">User name *</label>
+                                    <input id="userName" name="userName" type="text" class="required form-control">
+                                    <label for="password">Password *</label>
+                                    <input id="password" name="password" type="text" class="required form-control">
+                                    <label for="confirm">Confirm Password *</label>
+                                    <input id="confirm" name="confirm" type="text" class="required form-control">
+                                    <p>(*) Mandatory</p>
+                                </section> --}}
+                                <h3>Profile</h3>
 
-                                <div class="col-sm-3">
-                                    <a class="btn btn-secoundary btn-sm" href="{{ url('/') . '/user.xlsx' }}">
-                                        <button type="submit" class="btn btn-primary">
-                                            View Sample Excel
-                                        </button>
-                                    </a>
+                                <section>
+                                    <label for="name">First name *</label>
+                                    <input id="name" name="name" type="text" class="required form-control"
+                                        value="{{ $data->name }}">
+                                    <label for="surname">Mobile Number *</label>
+                                    <input id="surname" name="number" type="number" class="required form-control"
+                                        value="{{ $data->number }}">
+                                    <label for="email">Email *</label>
+                                    <input id="email" name="email" type="text"
+                                        class="required email form-control" value="{{ $data->email }}">
+                                    <label for="address">Address</label>
+                                    <input id="address" name="address" type="text" class=" form-control"
+                                        value="{{ $data->address }}">
+                                    <label for="profile_photo">Profile Photo</label>
+                                    <input type="file" name="image">
+                                    <p>(*) Mandatory</p>
+                                </section>
 
-                                    <form class="form-horizontal" action="{{ url('admin/import') }}" method="post"
-                                        enctype="multipart/form-data">
-                                        @csrf
-                                        <input class="form-control" type="file" name="file" id="fileToUpload"
-                                            required="true">
-
-                                        <button type="submit" class="btn btn-success">{{ __('Import') }}</button>
-                                    </form>
-
-                                </div>
-
-                                {{-- <div>
-                                  <?php echo Auth::user() ?>
-                                </div> --}}
-
-                                <div class="table-responsive">
-                                    <table id="zero_config" class="table table-striped table-bordered">
-                                        <thead>
-                                            <tr>
-                                                <th>Sr. No.</th>
-                                                <th>Name</th>
-                                                <th>Role</th>
-                                                <th>Email</th>
-                                                <th>Phone Number</th>
-                                                <th>Action</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($data as $datas)
-                                                <tr>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $datas->name }}</td>
-                                                    <td>{{ $datas->user_type }}</td>
-                                                    <td>{{ $datas->email }}</td>
-                                                    <td>{{ $datas->number }}</td>
-                                                    <td style="display: flex; align-items: center; gap: 10px;">
-                                                        <a href="{{ route('user.edit', $datas->id) }}">
-                                                            <i class="m-r-10 mdi mdi-account-edit"></i>
-                                                        </a>
-
-                                                        <form id="deleteForm"
-                                                            action="{{ route('user.destroy', $datas->id) }}"
-                                                            method="POST">
-                                                            @csrf
-                                                            @method('DELETE')
-                                                            <button type="submit" class="btn btn-danger"
-                                                                onclick="return confirmDelete();">
-                                                                <i class="m-r-10 mdi mdi-delete"></i> Delete
-                                                            </button>
-                                                        </form>
-
-                                                        <i class="m-r-10 mdi mdi-eye"></i>
-                                                    </td>
-
-                                                </tr>
-                                            @endforeach
-
-
-
-
-                                        </tbody>
-
-                                    </table>
-                                </div>
 
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
                 <!-- ============================================================== -->
@@ -184,17 +137,56 @@
     <!-- ============================================================== -->
     <!-- All Jquery -->
     <!-- ============================================================== -->
-    @include('admin.script')
+
+    <!-- this page js -->
+
+    <script src="{{ asset('admintheme/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    <!-- Bootstrap tether Core JavaScript -->
+    <script src="{{ asset('admintheme/assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
+    <script src="{{ asset('admintheme/assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+    <!-- slimscrollbar scrollbar JavaScript -->
+    <script src="{{ asset('admintheme/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
+    <script src="{{ asset('admintheme/assets/extra-libs/sparkline/sparkline.js') }}"></script>
+    <!--Wave Effects -->
+    <script src="{{ asset('admintheme/dist/js/waves.js') }}"></script>
+    <!--Menu sidebar -->
+    <script src="{{ asset('admintheme/dist/js/sidebarmenu.js') }}"></script>
+    <!--Custom JavaScript -->
+    <script src="{{ asset('admintheme/dist/js/custom.min.js') }}"></script>
+    <!-- this page js -->
+    <script src="{{ asset('admintheme/assets/libs/jquery-steps/build/jquery.steps.min.js') }}"></script>
+    <script src="{{ asset('admintheme/assets/libs/jquery-validation/dist/jquery.validate.min.js') }}"></script>
+
     <script>
-        function confirmDelete() {
-            // Display a confirmation dialog
-            var result = confirm("Are you sure you want to delete?");
-
-            // If user confirms, allow the link to proceed with the deletion
-            return result;
-        }
+        // Basic Example with form
+        var form = $("#example-form");
+        // form.validate({
+        //     errorPlacement: function errorPlacement(error, element) {
+        //         element.before(error);
+        //     },
+        //     rules: {
+        //         confirm: {
+        //             equalTo: "#password"
+        //         }
+        //     }
+        // });
+        form.children("div").steps({
+            headerTag: "h3",
+            bodyTag: "section",
+            transitionEffect: "slideLeft",
+            onStepChanging: function(event, currentIndex, newIndex) {
+                form.validate().settings.ignore = ":disabled,:hidden";
+                return form.valid();
+            },
+            onFinishing: function(event, currentIndex) {
+                form.validate().settings.ignore = ":disabled";
+                return form.valid();
+            },
+            onFinished: function(event, currentIndex) {
+                alert("Submitted!");
+            }
+        });
     </script>
-
 </body>
 
 </html>
