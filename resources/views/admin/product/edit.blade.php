@@ -38,6 +38,50 @@
                                         </div>
                                     </div>
 
+
+                                    <div class="form-group row">
+                                        <label for="fname"
+                                            class="col-sm-3 text-right control-label col-form-label">Category</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="fname" name="category"
+                                                value="{{ $products->category }}" autocomplete="off" required>
+                                        </div>
+                                    </div>
+
+                                    {{-- <div class="form-group row">
+                                        <label for="fname"
+                                            class="col-sm-3 text-right control-label col-form-label">Category</label>
+                                        <div class="col-sm-9">
+                                            <select class="select2 form-control custom-select" name="category"
+                                                style="width: 100%; height:36px;">
+                                                <option>Select</option>
+                                                @foreach ($products->category as $c)
+                                                    <optgroup label="{{ $c->id }}">
+                                                        <option value="{{ $c->id }}">{{ $c->id }}</option>
+                                                    </optgroup>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div> --}}
+
+                                    {{-- <div class="form-group row">
+                                        <label for="category"
+                                            class="col-sm-3 text-right control-label col-form-label">Category</label>
+                                        <div class="col-sm-9">
+                                            <select class="select2 form-control custom-select" name="category[]"
+                                                style="width: 100%; height:36px;">
+                                                <option>Select</option>
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->id }}"
+                                                        {{ $product->categories->contains($category->id) ? 'selected' : '' }}>
+                                                        {{ $category->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                    </div> --}}
+
+
                                     <div class="form-group row">
                                         <label for="fname"
                                             class="col-sm-3 text-right control-label col-form-label">Price</label>

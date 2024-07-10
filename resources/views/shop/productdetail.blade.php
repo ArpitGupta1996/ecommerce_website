@@ -375,8 +375,16 @@
                                     <li><a href="#"><i class="fa fa-star"></i></a></li>
                                 </ul>
                                 <p>Outstanding</p>
-                                <form class="row contact_form" action="contact_process.php" method="post"
-                                    id="contactForm" novalidate="novalidate">
+
+                                @if (session()->has('message'))
+                                    <div class="alert alert-danger">
+                                        {{ session()->get('message') }}
+                                    </div>
+                                @endif
+                                <form class="row contact_form" action="{{ url('review' . '/' . $data->id) }}"
+                                    method="post" id="contactForm" novalidate="novalidate"
+                                    enctype="multipart/form-data">
+                                    {{ csrf_field() }}
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <input type="text" class="form-control" id="name" name="name"

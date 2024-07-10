@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html dir="ltr" lang="en">
-
 @include('admin.header')
 
 <body>
@@ -41,7 +38,7 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-12 d-flex no-block align-items-center">
-                        <h4 class="page-title">Products</h4>
+                        <h4 class="page-title">Product's Review</h4>
                         <div class="ml-auto text-right">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
@@ -59,14 +56,7 @@
             <!-- ============================================================== -->
             <!-- Container fluid  -->
             <!-- ============================================================== -->
-            @if (session('message'))
-                <div class="alert alert-success alert-dismissible fade show" role="alert">
-                    {{ session('message') }}
-                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-            @endif
+
             <div class="container-fluid">
                 <!-- ============================================================== -->
                 <!-- Start Page Content -->
@@ -76,54 +66,17 @@
 
                         <div class="card">
                             <div class="card-body">
-                                {{-- <h5 class="card-title">Basic Datatable</h5> --}}
-                                <div>
-
-                                    <a href="{{ url('admin/products/create') }}">
-                                        <button type="submit" class="btn btn-secondary" style="margin-left:789px;">Add
-                                            Products</button>
-                                    </a>
-
-
-                                </div>
-
-                                <div class="col-sm-3">
-                                    <a class="btn btn-secoundary btn-sm" href="{{ url('/') . '/product.xlsx' }}">
-                                        <button type="submit" class="btn btn-primary">
-                                            View Sample Excel
-                                        </button>
-                                    </a>
-
-                                    <form class="form-horizontal" action="{{ url('admin/import-product') }}" method="post"
-                                        enctype="multipart/form-data">
-                                        @csrf
-                                        <input class="form-control" type="file" name="file" id="fileToUpload"
-                                            required="true">
-
-                                        <button type="submit" class="btn btn-success">{{ __('Import') }}</button>
-                                    </form>
-
-                                </div>
-
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-bordered">
                                         <thead>
                                             <tr>
                                                 <th>Sr.No.</th>
                                                 <th>Product Name</th>
-                                                <th>Product Category</th>
-                                                <th>Price</th>
-                                                <th>Product Code</th>
-                                                <th>Description</th>
-                                                <th>Image</th>
-                                                <th>Width</th>
-                                                <th>Height</th>
-                                                <th>Depth</th>
-                                                <th>Weight</th>
-                                                <th>Quality Checking</th>
-                                                <th>Quantity</th>
-                                                <th>Color</th>
-                                                <th>Discount</th>
+                                                <th>Customer Name</th>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Number</th>
+                                                <th>Message</th>
                                                 <th>Action</th>
 
                                             </tr>
@@ -132,25 +85,13 @@
                                             @foreach ($data as $da)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $da->product->name }}</td>
+                                                    <td>{{ $da->user->name }}</td>
                                                     <td>{{ $da->name }}</td>
-                                                    <td>{{ $da->category }}</td>
-                                                    <td>{{ $da->price }}</td>
-                                                    <td>{{ $da->product_code }}</td>
-                                                    <td>{{ $da->description }}</td>
-                                                    <td>
-                                                        <a href="{{ URL::to('products', $da->image) }}" download>
-                                                            <img src="{{ URL::to('products', $da->image) }}"
-                                                                alt="image" height="50px" width="50px">
-                                                        </a>
-                                                    </td>
-                                                    <td>{{ $da->width }}</td>
-                                                    <td>{{ $da->height }}</td>
-                                                    <td>{{ $da->depth }}</td>
-                                                    <td>{{ $da->weight }}</td>
-                                                    <td>{{ $da->quality_checking }}</td>
-                                                    <td>{{ $da->quantity }}</td>
-                                                    <td>{{ $da->color }}</td>
-                                                    <td>{{ $da->discount }}</td>
+                                                    <td>{{ $da->email }}</td>
+                                                    <td>{{ $da->number }}</td>
+                                                    <td>{{ $da->message }}</td>
+
                                                     <td>
 
                                                         <div class="btn-group" role="group"

@@ -38,7 +38,7 @@
     <!-- End related-product Area -->
 
     <!-- start footer Area -->
-    @include('layouts.footer')
+    @include('layouts.footer', ['data' => $data])
     <!-- End footer Area -->
 
    @include('layouts.script')

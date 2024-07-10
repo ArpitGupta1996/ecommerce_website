@@ -9,7 +9,7 @@ class Products extends Model
 {
     use HasFactory;
 
-    protected $fillable =[
+    protected $fillable = [
         'name',
         'price',
         'product_code',
@@ -22,10 +22,22 @@ class Products extends Model
         'quality_checking',
         'quantity',
         'color',
-        'discount'
+        'discount',
+        'category'
     ];
 
-    public function cartItems(){
+    public function cartItems()
+    {
         return $this->hasMany(CartItem::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(ProductReview::class);
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
     }
 }

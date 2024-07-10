@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Imports\ProductsImport;
+use App\Models\Category;
+use App\Models\ProductReview;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -28,7 +30,9 @@ class AdminProductController extends Controller
     public function create()
     {
         // return 'here';
-        return view('admin.product.create');
+
+        $category = Category::all();
+        return view('admin.product.create', compact('category'));
     }
 
     /**
@@ -57,10 +61,11 @@ class AdminProductController extends Controller
             'quantity' => $request->quantity,
             'color' => $request->color,
             'discount' => $request->discount,
-            'image' => $image_name
+            'image' => $image_name,
+            'category' => $request->category
         ]);
 
-        return redirect()->back();
+        return redirect()->route('products.index');
     }
 
     /**
@@ -78,7 +83,12 @@ class AdminProductController extends Controller
     {
         // return $id;
 
-        $products = Products::where('id', $id)->get()->first();
+        // $products = Products::where('id', $id)->get()->first();
+
+        $products = Products::findOrFail($id);
+        // $products = Products::with('categories')->findOrFail($id);
+
+        // $categories = Category::all();
 
         // return $products;
 
@@ -165,7 +175,8 @@ class AdminProductController extends Controller
         //
     }
 
-    public function import(Request $request){
+    public function import(Request $request)
+    {
         // $request->validate([
         //     'file' => 'required|mimes:xlsx,csv'
         // ]);
@@ -173,5 +184,16 @@ class AdminProductController extends Controller
         Excel::import(new ProductsImport, $request->file('file'));
 
         return back()->with('success', 'All good!');
+    }
+
+    public function productreview(Request $request)
+    {
+
+        // $data = ProductReview::all();
+        $data = ProductReview::with('user', 'product')->orderBy('id', 'desc')->get();
+
+        // return $data;
+
+        return view('admin.product.review', compact('data'));
     }
 }

@@ -22,21 +22,6 @@
 <script src="{{ asset('admintheme/assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js') }}"></script>
 <script src="{{ asset('admintheme/dist/js/pages/chart/chart-page-init.js') }}"></script>
 
-
-{{-- user create scripts starts from  here --}}
-{{-- <script src="{{ asset('admintheme/assets/libs/jquery/dist/jquery.min.js') }}"></script>
-    <!-- Bootstrap tether Core JavaScript -->
-    <script src="{{ asset('admintheme/assets/libs/popper.js/dist/umd/popper.min.js') }}"></script>
-    <script src="{{ asset('admintheme/assets/libs/bootstrap/dist/js/bootstrap.min.js') }}"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="{{ asset('admintheme/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js') }}"></script>
-    <script src="{{ asset('admintheme/assets/extra-libs/sparkline/sparkline.js') }}"></script>
-    <!--Wave Effects -->
-    <script src="{{ asset('admintheme/dist/js/waves.js') }}"></script>
-    <!--Menu sidebar -->
-    <script src="{{ asset('admintheme/dist/js/sidebarmenu.js') }}"></script>
-    <!--Custom JavaScript -->
-    <script src="{{ asset('admintheme/dist/js/custom.min.js') }}"></script> --}}
 <!-- This Page JS -->
 <script src="{{ asset('admintheme/assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js') }}"></script>
 <script src="{{ asset('admintheme/dist/js/pages/mask/mask.init.js') }}"></script>

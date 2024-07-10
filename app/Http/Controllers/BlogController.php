@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AboutUs;
 use App\Models\Blog;
 use App\Models\Comment;
 use Illuminate\Http\Request;
@@ -14,7 +15,7 @@ class BlogController extends Controller
     public function index()
     {
         // $blog = Blog::all();
-        $blog = Blog::orderBy('id','desc')->paginate(5);
+        $blog = Blog::orderBy('id', 'desc')->paginate(5);
 
 
         // return $blog;
@@ -88,13 +89,14 @@ class BlogController extends Controller
         // return $results;
 
         // return redirect()->back();
-        $blog = Blog::orderBy('id','desc')->paginate(5);
+        $blog = Blog::orderBy('id', 'desc')->paginate(5);
 
-        return view('blog.index', compact(['searchTerm','results', 'blog']));
+        return view('blog.index', compact(['searchTerm', 'results', 'blog']));
     }
 
 
-    public function comment(Request $request, $id){
+    public function comment(Request $request, $id)
+    {
         // return $id;
 
         $comment_data = Comment::create([
@@ -107,4 +109,5 @@ class BlogController extends Controller
 
         return redirect()->back();
     }
+
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Cart;
 use App\Models\CartItem;
+use App\Models\ProductReview;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -70,7 +71,7 @@ class ShopController extends Controller
     public function category(Request $request)
     {
         // $products = Products::all();
-        $products = Products::orderBy('id', 'desc')->paginate(5);
+        $products = Products::orderBy('id', 'desc')->paginate(6);
         // return $products;
         return view('shop.category', compact('products'));
     }
@@ -210,5 +211,34 @@ class ShopController extends Controller
             session()->put('cart', $cart);
             session()->flash('success', 'Cart updated successfully');
         }
+    }
+
+
+    #review functionality starts from here
+    public function review(Request $request, $id)
+    {
+
+        // return 'hedj';
+
+        // return $id;
+        if (Auth::user()) {
+            $data = Products::where('id', $id)->first();
+
+            // return $data;
+            // return $request;
+
+            $data = ProductReview::create([
+                'user_id' => Auth::id(),
+                'product_id' => $data->id,
+                'name' => $request->name,
+                'email' => $request->email,
+                'number' => $request->number,
+                'message' => $request->message
+            ]);
+        } else {
+            return redirect()->back()->with('message', 'Kindly login first');
+        }
+
+        return redirect()->back();
     }
 }

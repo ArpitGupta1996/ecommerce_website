@@ -310,7 +310,7 @@
                                                 <a href="{{ url('productdetail' . '/' . $p->id) }}">
                                                     <img class="img-fluid"
                                                         src="{{ URL::to('products') . '/' . $p->image }}"
-                                                        alt="image" width="auto" height="auto">
+                                                        alt="image" width="100px" height="100px">
                                                     <div class="product-details">
                                                         <h6>{{ $p->name }}</h6>
                                                         <div class="price">

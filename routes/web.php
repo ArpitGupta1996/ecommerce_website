@@ -3,7 +3,9 @@
 use App\Http\Controllers\Admin\AboutUsController;
 use App\Http\Controllers\Admin\AdminCommentController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminDashboard;
 use App\Http\Controllers\Admin\AdminProductController;
+use App\Http\Controllers\Admin\AuthorController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ContactAdminController;
 use App\Http\Controllers\Admin\ImageController;
@@ -13,6 +15,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -55,9 +58,9 @@ Route::middleware(['auth:sanctum', 'redirect', config('jetstream.auth_session'),
     ->prefix('admin')
     ->group(function () {
 
-        Route::get('/dashboard', function () {
-            return view('dashboard');
-        })->name('dashboard');
+        // Route::get('/dashboard', function () {
+        //     return view('dashboard');
+        // })->name('dashboard');
 
         Route::resource('user', UserController::class);
 
@@ -69,13 +72,14 @@ Route::middleware(['auth:sanctum', 'redirect', config('jetstream.auth_session'),
         Route::get('contactdetails', [ContactAdminController::class, 'contactdetails']);
 
         Route::resource('products', AdminProductController::class);
+        Route::get('productreview', [AdminProductController::class, 'productreview']);
 
         Route::resource('aboutus', AboutUsController::class);
 
         Route::get('admincomment', [AdminCommentController::class, 'index']);
 
         Route::post('/import', [UserController::class, 'import']);
-        Route::get('profile', [UserController::class,'profile']);
+        Route::get('profile', [UserController::class, 'profile']);
 
 
         Route::post('/import-product', [AdminProductController::class, 'import']);
@@ -83,11 +87,18 @@ Route::middleware(['auth:sanctum', 'redirect', config('jetstream.auth_session'),
         Route::resource('image', ImageController::class);
 
         Route::resource('role', RoleController::class);
+
+        Route::resource('dashboard', AdminDashboard::class);
+
+        Route::resource('author', AuthorController::class);
     });
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/', [WelcomeController::class,'index']);
+
 
 ######## Shop Header section starts from here ############
 Route::resource('shop', ShopController::class);
@@ -96,6 +107,8 @@ Route::get('/productdetail/{id}', [ShopController::class, 'productdetail']);
 Route::get('/productcheckout', [ShopController::class, 'productcheckout'])->name('productcheckout');
 Route::get('/shoppingcart', [ShopController::class, 'shoppingcart'])->name('shoppingcart');
 Route::get('/shop-confirmation', [ShopController::class, 'shopconfirmation'])->name('shopconfirmation');
+
+Route::post('review/{id}', [ShopController::class, 'review']);
 ############  till here shop header section ####################
 
 ######## Product Cart functionality starts here added by me today ##########################
@@ -119,3 +132,4 @@ Route::get('/about-us', [App\Http\Controllers\Admin\AboutUsController::class, 'g
 ######### Contact Controller section starts from here#########
 Route::resource('contact', ContactController::class);
 ########### till here contact controller section ###########
+
