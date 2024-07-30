@@ -18,11 +18,11 @@
     <!-- end features Area -->
 
     <!-- Start category Area -->
-    @include('area.startcategoryarea')
+    @include('area.startcategoryarea', ['front_image' => $front_image])
     <!-- End category Area -->
 
     <!-- start product Area -->
-   @include('area.startproductarea')
+   @include('area.startproductarea',['latest_products' => $latest_products])
     <!-- end product Area -->
 
     <!-- Start exclusive deal Area -->

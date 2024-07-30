@@ -40,6 +40,9 @@
                                 <li class="nav-item"><a class="nav-link" href="{{ route('blogs.index') }}">Blog</a></li>
                                 {{-- <li class="nav-item"><a class="nav-link" href="single-blog.html">Blog Details</a> --}}
                         </li>
+
+                        {{-- <li class="nav-item active"><a class="nav-link" href="{{ route('blogs.index') }}">Blogs</a></li> --}}
+
                     </ul>
                     </li>
                     <li class="nav-item submenu dropdown">
@@ -74,7 +77,7 @@
                     </ul>
 
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="nav-item"><a href="#" class="cart"><span class="ti-bag"></span></a></li>
+                        <li class="nav-item"><a href="{{ url('shoppingcart') }}" class="cart"><span class="ti-bag"></span></a></li>
                         <li class="nav-item">
                             <button class="search"><span class="lnr lnr-magnifier" id="search"></span></button>
                         </li>

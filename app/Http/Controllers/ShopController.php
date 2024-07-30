@@ -241,4 +241,21 @@ class ShopController extends Controller
 
         return redirect()->back();
     }
+
+
+    public function product_remove(Request $request, $id)
+    {
+        // return $id;
+
+        //cart delete, cart item delete
+        //user login only delete
+        //respective user  delete
+        if (Auth::user()) {
+            $cart = CartItem::where('cart_id', $id)->latest()->first();
+
+            return $cart;
+        } else {
+            return redirect()->back()->with('message', 'Kindly login first');
+        }
+    }
 }

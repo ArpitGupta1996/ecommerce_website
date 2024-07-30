@@ -69,6 +69,13 @@
                                         </thead>
                                         <tbody>
 
+                                            @foreach ($data as $d)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td><img src="{{ URL::to('front_page_image', $d->name) }}" height="100" width="100"></td>
+                                                    <td></td>
+                                                </tr>
+                                            @endforeach
 
 
                                         </tbody>

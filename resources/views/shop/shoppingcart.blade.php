@@ -35,6 +35,7 @@
                                 <th scope="col">Price</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Total</th>
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -81,6 +82,15 @@
                                         </td>
                                         <td>
                                             <h5 class="total-price">Rs.{{ $item->price }}</h5>
+                                        </td>
+
+                                        <td>
+                                            <form action="{{ url('product_remove') . '/' . $item->id }}" method="post">
+                                                @csrf
+                                                <button type="submit">
+                                                    <i style="font-size:24px" class="fa">&#xf014;</i>
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

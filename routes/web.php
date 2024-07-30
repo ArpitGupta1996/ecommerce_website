@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\PayPalController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\WelcomeController;
@@ -109,6 +110,8 @@ Route::get('/shoppingcart', [ShopController::class, 'shoppingcart'])->name('shop
 Route::get('/shop-confirmation', [ShopController::class, 'shopconfirmation'])->name('shopconfirmation');
 
 Route::post('review/{id}', [ShopController::class, 'review']);
+
+Route::post('product_remove/{id}', [ShopController::class, 'product_remove']);
 ############  till here shop header section ####################
 
 ######## Product Cart functionality starts here added by me today ##########################
@@ -133,3 +136,10 @@ Route::get('/about-us', [App\Http\Controllers\Admin\AboutUsController::class, 'g
 Route::resource('contact', ContactController::class);
 ########### till here contact controller section ###########
 
+
+######### Paypal Integration #########
+Route::get('create-transaction', [PayPalController::class, 'createTransaction'])->name('createTransaction');
+Route::get('process-transaction', [PayPalController::class, 'processTransaction'])->name('processTransaction');
+Route::get('success-transaction', [PayPalController::class, 'successTransaction'])->name('successTransaction');
+Route::get('cancel-transaction', [PayPalController::class, 'cancelTransaction'])->name('cancelTransaction');
+######### till here paypal integration
