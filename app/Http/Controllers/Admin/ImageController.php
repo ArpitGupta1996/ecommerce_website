@@ -14,6 +14,8 @@ class ImageController extends Controller
     public function index()
     {
         $data = FrontPageImage::all();
+
+        // return $data;
         return view('admin.images.index', compact('data'));
     }
 
@@ -73,5 +75,14 @@ class ImageController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function updateimagestatus(Request $request, $id)
+    {
+
+        // return $id;
+        $data = FrontPageImage::where('id', $id)->update(['status' => '1']);
+
+        return redirect()->back();
     }
 }

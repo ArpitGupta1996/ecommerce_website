@@ -72,8 +72,26 @@
                                             @foreach ($data as $d)
                                                 <tr>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td><img src="{{ URL::to('front_page_image', $d->name) }}" height="100" width="100"></td>
-                                                    <td></td>
+                                                    <td><img src="{{ URL::to('front_page_image', $d->name) }}"
+                                                            height="100" width="100"></td>
+                                                    <td>
+                                                        @if ($d->status == '0')
+                                                            <form action="{{ url('/admin/updateimage', $d->id) }}"
+                                                                method="post">
+                                                                @csrf
+                                                                <button type="submit"
+                                                                    class="btn btn-primary">Active</button>
+                                                            </form>
+                                                        @else
+                                                            <form action="{{ url('/admin/updateimage', $d->id) }}"
+                                                                method="post">
+                                                                @csrf
+                                                                <button type="submit"
+                                                                    class="btn btn-danger">Deactive</button>
+                                                            </form>
+                                                        @endif
+
+                                                    </td>
                                                 </tr>
                                             @endforeach
 
