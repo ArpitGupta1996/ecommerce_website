@@ -22,7 +22,7 @@ class WelcomeController extends Controller
 
         // return $latest_products;
 
-        $front_image = FrontPageImage::all();
+        $front_image = FrontPageImage::where('status','1')->get();  //In admin Panel for active images deactive will be shwon
 
         // return $front_image;
 

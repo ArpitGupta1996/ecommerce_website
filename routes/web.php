@@ -86,7 +86,9 @@ Route::middleware(['auth:sanctum', 'redirect', config('jetstream.auth_session'),
         Route::post('/import-product', [AdminProductController::class, 'import']);
 
         Route::resource('image', ImageController::class);
-        Route::post('/updateimage/{id}', [ImageController::class,'updateimagestatus']);
+        Route::post('/updateimage/{id}', [ImageController::class, 'updateimagestatus']);
+
+        Route::get('frontpagesliderimage',[ImageController::class,'frontpagesliderimage']);
 
         Route::resource('role', RoleController::class);
 
@@ -99,7 +101,7 @@ Route::middleware(['auth:sanctum', 'redirect', config('jetstream.auth_session'),
 //     return view('welcome');
 // });
 
-Route::get('/', [WelcomeController::class,'index']);
+Route::get('/', [WelcomeController::class, 'index']);
 
 
 ######## Shop Header section starts from here ############

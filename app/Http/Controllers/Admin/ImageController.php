@@ -85,4 +85,12 @@ class ImageController extends Controller
 
         return redirect()->back();
     }
+
+
+
+    public function frontpagesliderimage(Request $request){
+        // return 'here';
+
+        return view('admin.images.frontpagesliderimage.index');
+    }
 }

@@ -81,6 +81,21 @@
                 </li>
                 {{-- till here product list of admin --}}
 
+                {{-- order section for admin starts here --}}
+                <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
+                        href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span
+                            class="hide-menu">Orders </span></a>
+                    <ul aria-expanded="false" class="collapse  first-level">
+
+                        <li class="sidebar-item"><a href="" class="sidebar-link"><i
+                                    class="mdi mdi-note-plus"></i><span class="hide-menu"> Order List </span></a>
+                        </li>
+
+
+                    </ul>
+                </li>
+                {{-- till here orders list of admin --}}
+
                 <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
                         href="{{ url('admin/post') }}" aria-expanded="false"><i
                             class="mdi mdi-chart-bubble"></i><span class="hide-menu">Post</span></a>
@@ -113,7 +128,16 @@
                                     class="mdi mdi-note-outline"></i><span class="hide-menu"> Front Page
                                     Image</span></a>
                         </li>
+
+
+                        <li class="sidebar-item"><a href="{{ url('admin/frontpagesliderimage') }}" class="sidebar-link"><i
+                                    class="mdi mdi-note-outline"></i><span class="hide-menu">Front Page Slider
+                                    Image</span></a>
+                        </li>
                     </ul>
+
+
+
                 </li>
 
             </ul>
